@@ -1,4 +1,4 @@
-site_name: CSA_Wiki
+site_name: N0rth5ea's Blog
 copyright: Copyright &copy; 2023 - 2025 N0rth5ea
 site_description: 涅伽尔该清灰了
 site_author: N0rth5ea
@@ -44,6 +44,9 @@ markdown_extensions:
   - tables
   - pymdownx.tabbed:
       alternate_style: true
+plugins:
+  - include-markdown
+  - search
 # 导航栏配置
 nav:
   - 首页: index.md
@@ -51,6 +54,8 @@ nav:
       - 逆向基础:
           - 工具集合:
               - IDA Pro: study/reverse/tools/ida_pro.md
+              - JADX: study/reverse/tools/JADX.md
+              - Frida: study/reverse/tools/frida.md
       - wp集锦:
           - 2025-10:
               - 强网杯2025: study/wp/2025-10/qwb_2025.md
@@ -60,5 +65,3 @@ nav:
       - MC整合包:
           - 龙之冒险新征程: games/mc/dragon_adventure_new.md
   - 友链: friends.md
-plugins:
-  - include-markdown
