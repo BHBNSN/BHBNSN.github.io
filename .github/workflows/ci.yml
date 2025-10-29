@@ -6,6 +6,8 @@ on:
       - main
 permissions:
   contents: write
+  pages: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -26,6 +28,15 @@ jobs:
           pip install mkdocs-material
           pip install mkdocs-include-markdown-plugin
 
-      # 使用 mkdocs gh-deploy 并显式写入 CNAME，防止每次覆盖时丢失自定义域
+      - name: Build site
+        run: mkdocs build
+
+      - name: Ensure CNAME in site
+        run: echo "blog.n0rth5ea.online" > site/CNAME
+
       - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force --cname blog.n0rth5ea.online
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          cname: "blog.n0rth5ea.online"
