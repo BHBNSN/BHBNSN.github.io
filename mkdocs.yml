@@ -1,4 +1,4 @@
-site_name: N0rth5ea's Blog
+site_name: N0rth5ea's Capsule
 copyright: Copyright &copy; 2023 - 2025 N0rth5ea
 site_description: 涅伽尔该清灰了
 site_author: N0rth5ea
@@ -115,12 +115,14 @@ nav:
       - wp集锦:
           - 2025-10:
               - 强网杯2025: study/wp/2025-10/qwb_2025.md
+      - 杂货铺: study/miscellaneous.md
   - EVE小记:
       - 我的EVE之路: eve/my_eve_journey.md
   - 那些年误过的国:
       - MC整合包:
+          - FTB Skies: games/mc/ftb_skies.md
           - 龙之冒险新征程: games/mc/dragon_adventure_new.md
   - 杂谈:
       - 2025-10:
-          - 10-28: diary/2025-10.md
+          - ？？？: misc/2025-10/unknown.md
   - 友链: friends.md
