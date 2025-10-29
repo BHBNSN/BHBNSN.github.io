@@ -20,6 +20,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: pip install mkdocs-material
-      - run: pip install mkdocs-include-markdown-plugin
-      - run: mkdocs gh-deploy --force
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs-material
+          pip install mkdocs-include-markdown-plugin
+
+      # 使用 mkdocs gh-deploy 并显式写入 CNAME，防止每次覆盖时丢失自定义域
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force --cname blog.n0rth5ea.online
