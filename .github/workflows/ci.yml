@@ -11,6 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Normalize Markdown leading indent
+        run: |
+          find . -type f -name '*.md' -print0 \
+            | xargs -0 -r perl -i -pe 's/^\s{3}(?!\s)/    /'
+
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x

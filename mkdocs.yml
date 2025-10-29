@@ -9,8 +9,6 @@ theme:
   favicon: images/logo.png
 
   features:
-    - content.action.edit             # 编辑此页按钮
-    - content.action.view             # 查看源码按钮
     - content.code.annotate           # 代码注释
     - content.code.copy               # 代码块复制按钮
     - navigation.footer               # 页脚上下页导航
@@ -63,13 +61,14 @@ markdown_extensions:
       toc_depth: 3
 
   # PyMdown Extensions
-  - pymdownx.betterem:
-      smart_enable: all
+  # - pymdownx.betterem:
+  #     smart_enable: all
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.critic
   - pymdownx.details
+  - pymdownx.blocks.caption
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -102,11 +101,15 @@ plugins:
         - zh
         - en
   - include-markdown
-
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.js
+  - javascripts/pangu-init.js
 # 导航栏配置
 nav:
   - 首页: index.md
   - 学习之路:
+      - Android:
+          - 理论篇: study/android/theory.md
       - 逆向基础:
           - 工具集合:
               - IDA Pro: study/reverse/tools/ida_pro.md
