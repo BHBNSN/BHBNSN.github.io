@@ -6,6 +6,7 @@
 
 ---
 
+>实践固然能极快的获得成就感，但唯有理论的积累才能让你走得更远。
 
 ## Android 系统分层架构与启动流程
 ??? quote "参考资料"
@@ -95,7 +96,7 @@ Android 是一个基于 Linux 内核的复杂操作系统。其启动过程是�
 > 在 Android 启动流程中，我们已经简要介绍了 Zygote 进程的作用。大名鼎鼎的 Xposed 框架正是通过 Hook Zygote 来实现对所有 App 的代码注入。
 > 因此我们来从代码仔细深入了解下 Zygote 的工作原理。
 
-!!! note "以下基于 [Android 16.0.0_r2 源码](http://aospxref.com/android-16.0.0_r2/){target="_blank" rel="noopener"}分析"
+!!! note "无特殊说明，以下源码均基于 [Android 16.0.0_r2 源码](http://aospxref.com/android-16.0.0_r2/){target="_blank" rel="noopener"} 分析"
 
 按照我们[之前的介绍](#3-native-user-space)，Zygote 是由 init 进程启动的。我们可以在 init.rc 中找到对应启动：
 
@@ -135,10 +136,83 @@ Android 是一个基于 Linux 内核的复杂操作系统。其启动过程是�
 ```
 在经过一系列参数比对后，启动了java层`com.android.internal.os.ZygoteInit`，我们回到Android 16.0.0_r2源码中查看这个类：
 
-```java title="ZygoteInit.java"
-
+```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java"
+// 检查参数 line 848:860
+--8<-- "docs/study/android/source/ZygoteInit.java:848:860"
+// 预加载资源供后续孵化用 line 879:889
+--8<-- "docs/study/android/source/ZygoteInit.java:879:889"
+// 孵化 SystemServer line 984:913
+--8<-- "docs/study/android/source/ZygoteInit.java:904:913"
+// 循环等待创建请求 line 917:919
+--8<-- "docs/study/android/source/ZygoteInit.java:917:919"
 ```
 
+??? qutoe "ZygoteInit.java完整文件"
+    ```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java"
+    --8<-- "docs/study/android/source/ZygoteInit.java"
+    ```
+
+我们看看 ZygoteInit 最后启动 zygoteServer.runSelectLoop 方法:
+
+```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteServer.java" hl_lines="27 32"
+// runSelectLoop 方法 line 173:263
+--8<-- "docs/study/android/source/ZygoteServer.java:173:206"
+//...
+--8<-- "docs/study/android/source/ZygoteServer.java:228:229"
+//...
+--8<-- "docs/study/android/source/ZygoteServer.java:252:263"
+```
+
+??? qutoe "ZygoteServer.java完整文件"
+    ```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteServer.java"
+    --8<-- "docs/study/android/source/ZygoteServer.java"
+    ```
+
+可以看出 runSelectLoop 方法负责监听和管理请求，具体 fork 逻辑在 ZygoteConnection 方法中：
+
+```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteConnection.java"
+// 可以看到调用 Native 层的 fork 逻辑 line 234:237 hl_lines="234-237"
+--8<-- "docs/study/android/source/ZygoteConnection.java:234:237"
+```
+
+??? qutoe "ZygoteConnection.java完整文件"
+    ```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteConnection.java"
+    --8<-- "docs/study/android/source/ZygoteConnection.java"
+    ```
+
+比对一下可以发现，这里和 SystemServer 的孵化十分相似
+
+=== "ZygoteConnection"
+    ```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteConnection.java"
+    --8<-- "docs/study/android/source/ZygoteConnection.java:234:257"
+    ```
+=== "ZygoteInit"
+    ```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java"
+    --8<-- "docs/study/android/source/ZygoteInit.java:779:799"
+    ```
+
+而在调用的 forkAndSpecialize 和 forkSystemServer 更为相似
+=== "forkAndSpecialize"
+    ```java title="/frameworks/base/core/java/com/android/internal/os/Zygote.java"
+    --8<-- "docs/study/android/source/Zygote.java:133:155"
+    ```
+
+=== "forkSystemServer"
+    ```java title="/frameworks/base/core/java/com/android/internal/os/Zygote.java"
+    --8<-- "docs/study/android/source/Zygote.java:185:201"
+    ```
+
+在 Native 层中则是直接调用了 ForkAndSpecializeCommon
+
+```C++ title="/frameworks/base/core/jni/com_android_internal_os_Zygote.cpp" hl_lines="5-9"
+--8<-- "docs/study/android/source/com_android_internal_os_Zygote.cpp:870:901"
+```
+
+至此我们可以全心投入常规进程的孵化分析，而 SystemServer 的差异我们放在后续讨论。
+
+```C++ title="/frameworks/base/core/jni/com_android_internal_os_Zygote.cpp"
+--8<-- "docs/study/android/source/com_android_internal_os_Zygote.cpp:538:780"
+```
 
 ## System Server
 
