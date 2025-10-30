@@ -36,6 +36,9 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Create CNAME file
+        run: echo "blog.n0rth5ea.online" > CNAME
+
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
