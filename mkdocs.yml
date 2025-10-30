@@ -2,6 +2,10 @@ site_name: N0rth5ea's Capsule
 copyright: Copyright &copy; 2023 - 2025 N0rth5ea
 site_description: 涅伽尔该清灰了
 site_author: N0rth5ea
+site_url: https://blog.n0rth5ea.online
+
+repo_name: BHBNSN/BHBNSN.github.io
+repo_url: https://github.com/BHBNSN/BHBNSN.github.io
 theme:
   name: material
   language: zh
