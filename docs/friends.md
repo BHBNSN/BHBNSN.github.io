@@ -1,7 +1,6 @@
 # 友链
 
----
-
+>感谢有你们，那些五彩的瞬间是因为你们才绚烂
 
 - ![YoSheep](https://yosheep.github.io/img/yeah_circle.jpg){ width="30" style="border-radius:50%; vertical-align: middle; margin-right: .5rem;" } [YoSheep's 学习笔记](https://yosheep.github.io/){:target="_blank" rel="noopener"}
 
@@ -16,5 +15,7 @@
 - ![Xsh11p](https://xsh11p.github.io/images/logo.png){ width="30" style="border-radius:50%; vertical-align: middle; margin-right: .5rem;" } [Xsheep](https://Xsh11p.github.io){:target="_blank" rel="noopener"}
 
 ---
+
+>感谢这些组织的收容，共同成长才有了共同的成就
 
 - ![CAUC-CSA Wiki](https://cauc-csa.github.io/images/csa_logo.png){ width="30" style="border-radius:50%; vertical-align: middle; margin-right: .5rem;" } [CAUC-CSA Wiki](https://cauc-csa.github.io/){:target="_blank" rel="noopener"}
