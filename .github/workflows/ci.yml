@@ -15,7 +15,8 @@ jobs:
     env:
       TZ: Asia/Shanghai
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -35,15 +36,13 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build site
-        run: mkdocs build
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Ensure CNAME in site
-        run: echo "blog.n0rth5ea.online" > site/CNAME
+      - name: Fetch gh-pages branch
+        run: git fetch origin gh-pages --depth=1 || true
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          cname: "blog.n0rth5ea.online"
+        run: mkdocs gh-deploy
