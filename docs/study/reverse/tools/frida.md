@@ -1,7 +1,5 @@
 # 邦邦邦邦 真神来了 Frida
 
----
-
 ## 什么是frida
 
 > frida 是一款基于 python+javascript 的 hook 框架，可运行在 android、ios、linux、win等各个平台，主要使用的动态二进制插桩技术。
