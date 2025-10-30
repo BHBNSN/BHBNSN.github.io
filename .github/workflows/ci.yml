@@ -16,6 +16,8 @@ jobs:
       TZ: Asia/Shanghai
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Normalize Markdown leading indent
         run: |
