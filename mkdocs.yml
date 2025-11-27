@@ -127,6 +127,8 @@ nav:
               - IDA Pro: study/reverse/tools/ida_pro.md
               - JADX: study/reverse/tools/JADX.md
               - Frida: study/reverse/tools/frida.md
+      - 课程:
+          - 操作系统: study/courses/OS/index.md
       - wp集锦:
           - 2025-10:
               - 强网杯2025: study/wp/2025-10/qwb_2025.md
@@ -139,5 +141,5 @@ nav:
           - 龙之冒险新征程: games/mc/dragon_adventure_new.md
   - 杂谈:
       - 2025-10:
-          - ？？？: misc/2025-10/unknown.md
+          - nginx: misc/2025-11/nginx.md
   - 友链: friends.md

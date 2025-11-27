@@ -79,19 +79,20 @@ Android 是一个基于 Linux 内核的复杂操作系统。其启动过程是�
 ## Zygote
 
 ??? quote "参考资料"
-    - [Zygote 进程简介](https://source.android.google.cn/docs/core/runtime/zygote?hl=zh-cn){target="_blank" rel="noopener"}
-    - [谈谈对Android中Zygote的理解](https://zhuanlan.zhihu.com/p/260414370){target="_blank" rel="noopener"}
-    - [Android启动系列之一：init进程和Zygote进程](https://cloud.tencent.com/developer/article/2415718){target="_blank" rel="noopener"}
-    - [Android 9.0.0_r45 源码分析](https://github.com/lulululbj/android_9.0.0_r45/tree/master){target="_blank" rel="noopener"}
-    - [zygote 进程启动分析一](https://juejin.cn/post/7504582519733485604){target="_blank" rel="noopener"}
+    - [Java 世界的盘古和女娲 —— Zygote](https://juejin.cn/post/6844903955177144333){target="_blank" rel="noopener"}
+    - [Android Zygote启动流程](https://juejin.cn/post/7359405716090634251){target="_blank" rel="noopener"}
+    - [深入研究源码：Android10.0系统启动流程（三）：Zygote](https://zhuanlan.zhihu.com/p/350204845){target="_blank" rel="noopener"}
+    - [初学者视角下的libc](https://zhuanlan.zhihu.com/p/1945214835341124238){target="_blank" rel="noopener"}
+    - [Linux 系统调用 —— fork 内核源码剖析](https://www.cnblogs.com/chenxinshuo/p/11968329.html){target="_blank" rel="noopener"}
     - [AOSPXRef](http://aospxref.com/){target="_blank" rel="noopener"}
-    - [google source fork.cpp](https://android.googlesource.com/platform/bionic/+/refs/heads/main/libc/bionic/fork.cpp){target="_blank" rel="noopener"}
+    - [google source](https://android.googlesource.com/){target="_blank" rel="noopener"}
+    - [Android Code search](https://cs.android.com/android/platform/superproject/main/){target="_blank" rel="noopener"}
 
 !!! note "相关链接"
     - [Android 启动流程](#android_1)
     - [Xposed](#xposed)
     - [System Server](#system-server)
-
+    - [应用启动流程](#_2)
 > 在 Android 启动流程中，我们已经简要介绍了 Zygote 进程的作用。大名鼎鼎的 Xposed 框架正是通过 Hook Zygote 来实现对所有 App 的代码注入。
 > 因此我们来从代码仔细深入了解下 Zygote 的工作原理。
 
@@ -227,7 +228,7 @@ Java 层的 `native` 方法最终会调用到 C++ 层的 `ForkCommon` 函数来�
 
 我们来看 `ForkCommon` 的实现方法，我们先沿着进程的创建这条主线来一路看下去：
 
-```C++ title="/frameworks/base/core/jni/com_android_internal_os_Zygote.cpp" hl_lines="9"
+```C++ title="/frameworks/base/core/jni/com_android_internal_os_Zygote.cpp" hl_lines="10"
 // line 2421:2523
 --8<-- "docs/study/android/source/com_android_internal_os_Zygote.cpp:2421:2427"
 //...
@@ -236,13 +237,77 @@ Java 层的 `native` 方法最终会调用到 C++ 层的 `ForkCommon` 函数来�
 --8<-- "docs/study/android/source/com_android_internal_os_Zygote.cpp:2522:2523"
 ```
 
-ForkCommon 调用了 `fork()` 方法，这来源于bionic/libc/bionic/fork.cpp，再后续就陷入 Linux 内核的 `fork` 实现细节了，这里不再赘述。
+ForkCommon 调用了 `fork()` 方法，并且接受了返回的 pid。
 
+#### 4. libc 层：从 Native 陷入 内核态
 
+这里的 fork 方法来源于 libc。其实这里已经是 linux 通用的系统调用流程了，但是既然到这里，就一路往下吧。
 
+>libc（C标准库）可以被看作是应用程序与 Linux 内核之间的一个“翻译层”或“接口层”。
 
+```C++ title="/bionic/libc/bionic/fork.cpp" hl_lines="6-7 19 24"
+// line
+--8<-- "docs/study/android/source/fork.cpp:37:75"
+```
+
+调用的 libc 的 clone 方法：
+
+```C++ title="/bionic/libc/bionic/clone.cpp" hl_lines="14 16"
+// line
+--8<-- "docs/study/android/source/clone.cpp:57:61"
+//...
+--8<-- "docs/study/android/source/clone.cpp:100:110"
+```
+
+在这里我们看到了是调用了 `syscall` 方法。在深入就是内核的事情了，这里我们就不继续深入了。
+下面我们来看看 System Server 的孵化以及正常应用的启动流程。
 
 ## System Server
+
+
+
+## 应用启动流程
+### 1. 为什么你能点开一个 App？
+我们每天看到的桌面实际上也是一个 App，叫做 Launcher（启动器），位于 `/packages/apps/Launcher3/`。
+图标点击事件由 BubbleTextView 或 ShortcutAndWidgetContainer 传递到 Launcher，再走 startActivitySafely() → AMS。
+```java title="Launcher3 启动 App 代码"
+@Override
+public RunnableList startActivitySafely(View v, Intent intent, ItemInfo item) {
+    if (!hasBeenResumed()) {
+        RunnableList result = new RunnableList();
+        // Workaround an issue where the WM launch animation is clobbered when finishing the
+        // recents animation into launcher. Defer launching the activity until Launcher is
+        // next resumed.
+        addEventCallback(EVENT_RESUMED, () -> {
+            RunnableList actualResult = startActivitySafely(v, intent, item);
+            if (actualResult != null) {
+                actualResult.add(result::executeAllAndDestroy);
+            } else {
+                result.executeAllAndDestroy();
+            }
+        });
+        if (mOnDeferredActivityLaunchCallback != null) {
+            mOnDeferredActivityLaunchCallback.run();
+            mOnDeferredActivityLaunchCallback = null;
+        }
+        return result;
+    }
+    
+    RunnableList result = super.startActivitySafely(v, intent, item);
+    if (result != null && v instanceof BubbleTextView) {
+        // This is set to the view that launched the activity that navigated the user away
+        // from launcher. Since there is no callback for when the activity has finished
+        // launching, enable the press state and keep this reference to reset the press
+        // state when we return to launcher.
+        BubbleTextView btv = (BubbleTextView) v;
+        btv.setStayPressed(true);
+        result.add(() -> btv.setStayPressed(false));
+    }
+    return result;
+}
+```
+
+
 
 
 ## Xposed
