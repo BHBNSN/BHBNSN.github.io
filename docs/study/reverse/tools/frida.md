@@ -14,10 +14,11 @@
 
 ## 基础配置
 
-1. 安装frida
+1. 安装frida客户端
     ```bash
     pip install frida-tools
     ```
+   可以运行`frida-ps`测试是否安装成功
    
 2. 如果在本机注入，则可以直接使用，例如：
     ```bash
@@ -38,7 +39,6 @@
     frida -U -n <package_name> -l hook.js
     ```
 
-
     ```python
     import frida
 
@@ -56,10 +56,18 @@
     script.load()
     ```
 
-4. 测试frida正常连接
+4. 自动补全配置
+
+    [frida-agent-example](https://github.com/oleavr/frida-agent-example)
+    
     ```bash
-    frida-ps
+    git clone https://github.com/oleavr/frida-agent-example.git
+    cd frida-agent-example/
+    npm install
+    frida -U -f com.example.android -l _agent.js
     ```
+   
+    此时在 `./frida-agent-example/agent/` 目录下编写脚本即可获得自动补全功能
 
 ## 基础使用
 
@@ -67,11 +75,11 @@
 - javascript基础语法较为简单，但是在frida中有大量自定义接口，需通过文档与脚本阅读理解学习，我将会在本帖按照随心而定的顺序介绍一些常用的接口。
 
 ### 注入模式
-- attach 附加到正在运行的进程
-- spawn 重启进程在运行开头注入，即加入-f参数
+- attach 附加到正在运行的进程，因此这种模式我们常通过 PID 注入
+- spawn 重启进程在运行开头注入，即加入-f参数，因此这种模式我们常通过包名注入
 
 ### 脚本参数
-```bash hl_lines="1-3 17 27"
+```bash hl_lines="1-4 15 17 27"
 -h, --help            显示帮助信息并退出
 -D ID, --device ID    连接到指定ID的设备
 -U, --usb             连接到USB设备

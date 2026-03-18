@@ -122,6 +122,8 @@ nav:
   - 学习之路:
       - Android:
           - 理论篇: study/android/theory.md
+          - AOSP:
+              - 介绍: study/android/aosp/index.md
       - 逆向基础:
           - 工具集合:
               - IDA Pro: study/reverse/tools/ida_pro.md
@@ -136,6 +138,10 @@ nav:
               - 强网杯2025: study/wp/2025-10/qwb_2025.md
           - 2025-11:
               - 古剑山2025: study/wp/2025-11/gjs_2025.md
+          - 2025-12:
+              - 国赛&长城杯初赛: study/wp/2025-12/ciscn&ccb_2026.md
+          - 2026-03:
+              - 软件系统安全初赛: study/wp/2026-03/ccsssc_2026.md
       - 杂货铺: study/miscellaneous.md
   - EVE小记:
       - 我的EVE之路: eve/my_eve_journey.md
@@ -143,7 +149,5 @@ nav:
       - MC整合包:
           - FTB Skies: games/mc/ftb_skies.md
           - 龙之冒险新征程: games/mc/dragon_adventure_new.md
-  - 杂谈:
-      - 2025-10:
-          - nginx: misc/2025-11/nginx.md
+  - 杂谈: miscellaneous.md
   - 友链: friends.md

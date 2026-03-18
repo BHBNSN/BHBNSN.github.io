@@ -18,4 +18,4 @@
 
 >感谢这些组织的收容，共同成长才有了共同的成就
 
-- ![CAUC-CSA Wiki](https://cauc-csa.github.io/images/csa_logo.png){ width="30" style="border-radius:50%; vertical-align: middle; margin-right: .5rem;" } [CAUC-CSA Wiki](https://cauc-csa.github.io/){:target="_blank" rel="noopener"}
+- ![CAUC-CSA Wiki](https://wiki.cauc-csa.org.cn/images/csa_logo.png){ width="30" style="border-radius:50%; vertical-align: middle; margin-right: .5rem;" } [CAUC-CSA Wiki](https://wiki.cauc-csa.org.cn/){:target="_blank" rel="noopener"}
