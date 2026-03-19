@@ -1,0 +1,48 @@
+/* =========================
+   🌌 全局背景
+========================= */
+body {
+  background-image: url("../../images/bg.gif");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+/* =========================
+   📄 内容区（玻璃）
+========================= */
+.md-main__inner {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* 深色模式 */
+[data-md-color-scheme="slate"] .md-main__inner {
+  background: rgba(30, 30, 30, 0.6);
+}
+
+
+/* 内部全部透明（防止层叠 bug） */
+.md-sidebar__inner,
+.md-sidebar__scrollwrap,
+.md-nav {
+  background: transparent !important;
+}
+
+/* =========================
+   📏 可选：内容宽度优化
+========================= */
+
+.md-grid {
+  max-width: 88%;
+}
+
+/* nav link 本身不再制造块感 */
+.md-nav__link {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
