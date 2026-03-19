@@ -8,28 +8,40 @@ body {
   background-attachment: fixed;
 }
 
-
 /* =========================
-   📄 内容区（玻璃）
+   目录+内容区：半透明背景+圆角
 ========================= */
 .md-main__inner {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.60);
+  border-radius: 12px;
+}
+[data-md-color-scheme="slate"] .md-main__inner {
+  background: rgba(30, 30, 30, 0.60);
+  border-radius: 12px;
+}
+
+
+/* =========================
+   毛玻璃：只放在正文内容区
+========================= */
+.md-content {
+  position: relative;
+  z-index: 0;
+}
+
+.md-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   border-radius: 12px;
-  padding: 1rem;
+  z-index: -1;
+  pointer-events: none;
 }
-
-/* 深色模式 */
-[data-md-color-scheme="slate"] .md-main__inner {
-  background: rgba(30, 30, 30, 0.6);
-}
-
-
-/* 内部全部透明（防止层叠 bug） */
-.md-sidebar__inner,
-.md-sidebar__scrollwrap,
-.md-nav {
-  background: transparent !important;
+[data-md-color-scheme="slate"] .md-content::before {
+  background: rgba(30, 30, 30, 0.18);
 }
 
 /* =========================
