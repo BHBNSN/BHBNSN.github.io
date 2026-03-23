@@ -31,7 +31,7 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue grey
+      primary: white
       accent: indigo
       toggle:
         icon: material/brightness-7
@@ -99,6 +99,7 @@ markdown_extensions:
 
 # 插件配置
 plugins:
+  - glightbox
   - toggle-sidebar:
       toggle_button: all
       button_toggle_both_tooltip: hide left sidebar
@@ -129,8 +130,8 @@ nav:
           - 理论篇: study/android/theory.md
           - AOSP:
               - 介绍: study/android/aosp/index.md
-              - zygote 启动流程: study/android/aosp/zygote_startup.md
-              - 应用进程孵化流程: study/android/aosp/zygote_fork.md
+              - Zygote 启动流程: study/android/aosp/zygote_startup.md
+              - Zygote 孵化流程: study/android/aosp/zygote_fork.md
       - 逆向基础:
           - 工具集合:
               - IDA Pro: study/reverse/tools/ida_pro.md
