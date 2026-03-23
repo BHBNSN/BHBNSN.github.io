@@ -58,3 +58,18 @@ body {
   box-shadow: none !important;
 }
 
+/* =========================
+   🧊 顶部两栏：液态玻璃
+   对应 .md-header + .md-tabs
+========================= */
+
+.md-header,
+.md-tabs {
+  background: rgba(208, 241, 255, 0.8);
+}
+[data-md-color-scheme="slate"] .md-header{
+  background: rgba(10, 11, 23, 0.85);
+}
+[data-md-color-scheme="slate"] .md-tabs {
+  background: rgba(10, 11, 23, 0.85);
+}
