@@ -4,11 +4,11 @@
 
 Loader中有base64编码的长字符
 
-![image-20260314220827933.png](image\image-20260314220827933.png)
+![image-20260314220827933.png](./image/image-20260314220827933.png)
 
 base64解码后是二进制
 
-![image-20260314215955133](image\image-20260314215955133.png)
+![image-20260314215955133](./image/image-20260314215955133.png)
 
 die发现是pyc, 线上反编译出py, 看到file_to_video函数, 反向写出video_to_file脚本
 
@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
 解出来是一个elf
 
-![image-20260314221221451](image\image-20260314221221451.png)
+![image-20260314221221451](./image/image-20260314221221451.png)
 
 运行提示是MD5逐字符爆破, ida打开后根据md5值顺序写爆破脚本
 
@@ -193,7 +193,7 @@ if __name__ == "__main__":
             print(item)
 ```
 
-![image-20260314230053730](image\image-20260314230053730.png)
+![image-20260314230053730](./image/image-20260314230053730.png)
 
 ## RE2
 
@@ -361,7 +361,7 @@ if __name__ == "__main__":
 
 ```
 
-![image-20260314223811209](image\image-20260314223811209.png)
+![image-20260314223811209](./image/image-20260314223811209.png)
 
 ## RE3
 
@@ -404,7 +404,7 @@ PycBuffer::getByte(): Unexpected end of stream
 
 在线工具能进一步看出有一段base85
 
-![image-20260314224514416](image\image-20260314224514416.png)
+![image-20260314224514416](./image/image-20260314224514416.png)
 
 这里不能用厨子的base85解码, 好像是有多套标准, 解码出来是python脚本
 
@@ -983,4 +983,4 @@ function main() {
 setImmediate(main);
 ```
 
-![image-20260314230349778](image\image-20260314230349778.png)
+![image-20260314230349778](./image/image-20260314230349778.png)
