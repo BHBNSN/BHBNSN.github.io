@@ -1698,12 +1698,12 @@
 
   <h1>软件系统安全初赛</h1>
 
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-03-18"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-03-18T21:36:05+08:00">2026-03-18 21:36:05</time></span><span data-tippy-content="" data-tippy-raw="2026-03-18"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-03-18T21:36:05+08:00">2026-03-18 21:36:05</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
+<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-03-18"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-03-18T21:36:05+08:00">2026-03-18 21:36:05</time></span><span data-tippy-content="" data-tippy-raw="2026-03-23"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-03-23T13:37:29+08:00">2026-03-23 13:37:29</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
 <h2 id="re1">RE1<a class="headerlink" href="#re1" title="Permanent link">¶</a></h2>
 <p>Loader中有base64编码的长字符</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="image\image-20260314220827933.png" data-desc-position="bottom"><img alt="image-20260314220827933.png" src="image\image-20260314220827933.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/image-20260314220827933.png" data-desc-position="bottom"><img alt="image-20260314220827933.png" src="../image/image-20260314220827933.png"></a></p>
 <p>base64解码后是二进制</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="image\image-20260314215955133.png" data-desc-position="bottom"><img alt="image-20260314215955133" src="image\image-20260314215955133.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/image-20260314215955133.png" data-desc-position="bottom"><img alt="image-20260314215955133" src="../image/image-20260314215955133.png"></a></p>
 <p>die发现是pyc, 线上反编译出py, 看到file_to_video函数, 反向写出video_to_file脚本</p>
 <div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1886,7 +1886,7 @@
 </span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90"></a>    <span class="n">video_to_file</span><span class="p">(</span><span class="s2">"D:</span><span class="se">\\</span><span class="s2">document</span><span class="se">\\</span><span class="s2">ctf</span><span class="se">\\</span><span class="s2">CTFQ</span><span class="se">\\</span><span class="s2">#1 赛题~</span><span class="se">\\</span><span class="s2">26.3.14软件安全初赛</span><span class="se">\\</span><span class="s2">re1-d348de62-7f3b-4ccd-b608-8e108e7bf221</span><span class="se">\\</span><span class="s2">video.mp4"</span><span class="p">,</span><span class="s2">"flag.txt"</span><span class="p">)</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>解出来是一个elf</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="image\image-20260314221221451.png" data-desc-position="bottom"><img alt="image-20260314221221451" src="image\image-20260314221221451.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/image-20260314221221451.png" data-desc-position="bottom"><img alt="image-20260314221221451" src="../image/image-20260314221221451.png"></a></p>
 <p>运行提示是MD5逐字符爆破, ida打开后根据md5值顺序写爆破脚本</p>
 <div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
@@ -2046,7 +2046,7 @@
 </span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78"></a>        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">unknown</span><span class="p">:</span>
 </span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79"></a>            <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </span></code></pre></div></td></tr></tbody></table></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="image\image-20260314230053730.png" data-desc-position="bottom"><img alt="image-20260314230053730" src="image\image-20260314230053730.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/image-20260314230053730.png" data-desc-position="bottom"><img alt="image-20260314230053730" src="../image/image-20260314230053730.png"></a></p>
 <h2 id="re2">RE2<a class="headerlink" href="#re2" title="Permanent link">¶</a></h2>
 <p>查壳是upx, winhex看出是魔改, UPX替换成了CTF, 但是复原后仍然无法工具脱壳, 动调脱壳修复一条龙服务安排</p>
 <p>提取出来的<code>.hello</code> 和 <code>.mydata</code>section是加密的, 动调dump出明文</p>
@@ -2347,7 +2347,7 @@
 </span><span id="__span-3-145"><a id="__codelineno-3-145" name="__codelineno-3-145"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 </span><span id="__span-3-146"><a id="__codelineno-3-146" name="__codelineno-3-146"></a>    <span class="n">main</span><span class="p">()</span>
 </span></code></pre></div></td></tr></tbody></table></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="image\image-20260314223811209.png" data-desc-position="bottom"><img alt="image-20260314223811209" src="image\image-20260314223811209.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/image-20260314223811209.png" data-desc-position="bottom"><img alt="image-20260314223811209" src="../image/image-20260314223811209.png"></a></p>
 <h2 id="re3">RE3<a class="headerlink" href="#re3" title="Permanent link">¶</a></h2>
 <p>pycdc反编译不出来, pycdas可以看到段信息</p>
 <div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
@@ -2415,7 +2415,7 @@
 </span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="n">PycBuffer</span><span class="p">::</span><span class="n">getByte</span><span class="p">():</span> <span class="n">Unexpected</span> <span class="n">end</span> <span class="n">of</span> <span class="n">stream</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>在线工具能进一步看出有一段base85</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="image\image-20260314224514416.png" data-desc-position="bottom"><img alt="image-20260314224514416" src="image\image-20260314224514416.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/image-20260314224514416.png" data-desc-position="bottom"><img alt="image-20260314224514416" src="../image/image-20260314224514416.png"></a></p>
 <p>这里不能用厨子的base85解码, 好像是有多套标准, 解码出来是python脚本</p>
 <div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">  1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">  2</a></span>
@@ -3494,7 +3494,7 @@
 </span><span id="__span-10-344"><a id="__codelineno-10-344" name="__codelineno-10-344"></a>
 </span><span id="__span-10-345"><a id="__codelineno-10-345" name="__codelineno-10-345"></a><span class="nx">setImmediate</span><span class="p">(</span><span class="nx">main</span><span class="p">);</span>
 </span></code></pre></div></td></tr></tbody></table></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="image\image-20260314230349778.png" data-desc-position="bottom"><img alt="image-20260314230349778" src="image\image-20260314230349778.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/image-20260314230349778.png" data-desc-position="bottom"><img alt="image-20260314230349778" src="../image/image-20260314230349778.png"></a></p>
 
 
 
