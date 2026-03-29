@@ -137,6 +137,7 @@ nav:
               - IDA Pro: study/reverse/tools/ida_pro.md
               - JADX: study/reverse/tools/JADX.md
               - Frida: study/reverse/tools/frida.md
+              - Unicorn: study/reverse/tools/Unicorn-engine.md
       - 课程:
           - 操作系统:
               - 概述: study/courses/OS/index.md
@@ -150,11 +151,14 @@ nav:
               - 国赛&长城杯初赛: study/wp/2025-12/ciscn&ccb_2026.md
           - 2026-03:
               - 软件系统安全初赛: study/wp/2026-03/ccsssc_2026.md
-      - 杂货铺: study/miscellaneous.md
+      - 杂货铺:
+          - 概述: study/miscellaneous/index.md
+          - Linux 进程 fork 机制: study/miscellaneous/linux_fork.md
+          - 大小端序: study/miscellaneous/endian.md
   - EVE小记:
       - 我的EVE之路: eve/my_eve_journey.md
   - 那些年误过的国:
       - MC整合包:
           - 龙之冒险新征程: games/mc/dragon_adventure_new.md
-  - 杂谈: miscellaneous.md
+  - 杂谈: endian.md
   - 友链: friends.md

@@ -1,10 +1,4 @@
-# 杂货铺
-
-本文档收集一些零散的知识点
-
----
-
-## Linux 进程 fork 机制
+# Linux 进程 fork 机制
 !!! note "参考资料"
     [【知乎】linux 进程 fork()](https://zhuanlan.zhihu.com/p/53527981){target="_blank" rel="noopener"}
 
