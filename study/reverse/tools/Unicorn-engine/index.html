@@ -9,13 +9,13 @@
         <meta name="author" content="N0rth5ea">
       
       
-        <link rel="canonical" href="https://blog.n0rth5ea.online/study/reverse/tools/frida/">
+        <link rel="canonical" href="https://blog.n0rth5ea.online/study/reverse/tools/Unicorn-engine/">
       
       
-        <link rel="prev" href="../JADX/">
+        <link rel="prev" href="../frida/">
       
       
-        <link rel="next" href="../Unicorn-engine/">
+        <link rel="next" href="../../../courses/OS/">
       
       
       <link rel="icon" href="../../../../images/logo.png">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Frida - N0rth5ea's Capsule</title>
+        <title>Unicorn - N0rth5ea's Capsule</title>
       
     
     
@@ -105,7 +105,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#frida" class="md-skip">
+        <a href="#unicorn-engine" class="md-skip">
           跳转至
         </a>
       
@@ -138,7 +138,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Frida
+              Unicorn
             
           </span>
         </div>
@@ -831,6 +831,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../frida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frida
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -848,7 +871,7 @@
   
   
   <span class="md-ellipsis">
-    Frida
+    Unicorn
     
   </span>
   
@@ -861,7 +884,7 @@
   
   
   <span class="md-ellipsis">
-    Frida
+    Unicorn
     
   </span>
   
@@ -884,18 +907,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#frida_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      什么是frida
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      基础配置
+      安装
     </span>
   </a>
   
@@ -914,7 +928,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      注入模式
+      示例代码
     </span>
   </a>
   
@@ -923,25 +937,53 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      脚本参数
+      模拟构建流程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模拟构建流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 模拟器初始化
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      获取进程信息
+      2. 内存分配与写入
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-      插桩
+      3. 寄存器初始化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 开始模拟
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 读取最终结果寄存器的值
     </span>
   </a>
   
@@ -951,39 +993,44 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#frida_2" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      frida 检测隐藏
+      进阶使用
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="frida 检测隐藏">
+    <nav class="md-nav" aria-label="进阶使用">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      汇编转机器码
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      文件名检测
+      反汇编机器码
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#hook" class="md-nav__link">
     <span class="md-ellipsis">
-      端口检测
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      双进程保护
+      HOOK
     </span>
   </a>
   
@@ -998,29 +1045,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Unicorn-engine/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Unicorn
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1902,46 +1926,200 @@
   
 
 
-<h1 id="frida">邦邦邦邦 真神来了 Frida<a class="headerlink" href="#frida" title="Permanent link">¶</a></h1>
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2025-10-27"><span class="material-icons" data-icon="doc_created"></span><time datetime="2025-10-27T16:08:26.999648+08:00">2025-10-27 16:08:26</time></span><span data-tippy-content="" data-tippy-raw="2026-03-18"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-03-18T21:36:05+08:00">2026-03-18 21:36:05</time></span><span class="material-icons" data-icon="doc_authors"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:147256685+BHBNSN@users.noreply.github.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="" data-desc-position="bottom"><img class="avatar" src=""></a></div><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="" data-desc-position="bottom"><img class="avatar" src=""></a></div></div></div></div>
+<h1 id="unicorn-engine">Unicorn Engine<a class="headerlink" href="#unicorn-engine" title="Permanent link">¶</a></h1>
+<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-03-26"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-03-26T10:41:28.560240+08:00">2026-03-26 10:41:28</time></span><span data-tippy-content="" data-tippy-raw="2026-03-29"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-03-29T20:08:58+08:00">2026-03-29 20:08:58</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
 
-<div class="admonition warning">
-<p class="admonition-title">注意</p>
-<p>本文档内容基于frida 17 版本，有部分破坏性更新，请注意版本区别
-<br>本文大部分场景是 android 平台下的场景，windows 等平台有相同之处，但也有区别，需自行查阅文档</p>
+<p>Unicorn Engine 是一个基于 qemu 的轻量级多平台、多架构的反汇编引擎，支持 x86、x86_64、ARM、AArch64、MIPS、PowerPC、SPARC 等多种架构。它提供了一个简单的 API，可以用于模拟和调试二进制代码。</p>
+<p>Unicorn 只负责模拟 CPU 的指令执行，因此在学习使用时候需要手动模拟操作系统为 cpu 使用。</p>
+<div class="admonition quote">
+<p class="admonition-title">相关链接</p>
+<ul>
+<li><a href="https://www.unicorn-engine.org/docs/" rel="noopener" target="_blank">Unicorn Engine 官方文档</a></li>
+<li><a href="https://github.com/unicorn-engine/unicorn" rel="noopener" target="_blank">Unicorn Engine GitHub 仓库</a></li>
+<li><a href="https://bbs.kanxue.com/thread-289502.htm" rel="noopener" target="_blank">看雪-深入浅出 Unicorn 框架学习</a></li>
+</ul>
 </div>
-<h2 id="frida_1">什么是frida<a class="headerlink" href="#frida_1" title="Permanent link">¶</a></h2>
-<blockquote>
-<p>frida 是一款基于 python+javascript 的 hook 框架，可运行在 android、ios、linux、win等各个平台，主要使用的动态二进制插桩技术。</p>
-</blockquote>
-<p><a href="https://github.com/frida/frida">项目地址</a></p>
-<p><a href="https://frida.re/">官网及使用文档</a></p>
-<h2 id="_1">基础配置<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<h2 id="_1">安装<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>最简单的方法就是通过 pip 安装 Unicorn Engine</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>unicorn
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>Unicorn 还有两个同源项目，分别是 Keystone Engine（一个汇编引擎）和 Capstone Engine（一个反汇编引擎），它们也可以通过 pip 安装：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>keystone-engine
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>pip<span class="w"> </span>install<span class="w"> </span>capstone
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>当然还以上都可以自己编译，官方文档里有详细的说明。</p>
+<h2 id="_2">基础使用<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="_3">示例代码<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p>很多博客还有官方文档都使用的下面这段代码介绍基础使用</p>
+<p></p><div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="ch">#!/usr/bin/python</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">unicorn</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">unicorn.x86_const</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1"># code to be emulated</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="n">X86_CODE32</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">"</span><span class="se">\x41\x4a</span><span class="s2">"</span> <span class="c1"># INC ecx; DEC edx</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="c1"># memory address where emulation starts</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="n">ADDRESS</span> <span class="o">=</span> <span class="mh">0x1000000</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Emulate i386 code"</span><span class="p">)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a>    <span class="c1"># Initialize emulator in X86-32bit mode</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a>    <span class="n">mu</span> <span class="o">=</span> <span class="n">Uc</span><span class="p">(</span><span class="n">UC_ARCH_X86</span><span class="p">,</span> <span class="n">UC_MODE_32</span><span class="p">)</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a>    <span class="c1"># map 2MB memory for this emulation</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a>    <span class="n">mu</span><span class="o">.</span><span class="n">mem_map</span><span class="p">(</span><span class="n">ADDRESS</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a>    <span class="c1"># write machine code to be emulated to memory</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>    <span class="n">mu</span><span class="o">.</span><span class="n">mem_write</span><span class="p">(</span><span class="n">ADDRESS</span><span class="p">,</span> <span class="n">X86_CODE32</span><span class="p">)</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>    <span class="c1"># initialize machine registers</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a>    <span class="n">mu</span><span class="o">.</span><span class="n">reg_write</span><span class="p">(</span><span class="n">UC_X86_REG_ECX</span><span class="p">,</span> <span class="mh">0x1234</span><span class="p">)</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a>    <span class="n">mu</span><span class="o">.</span><span class="n">reg_write</span><span class="p">(</span><span class="n">UC_X86_REG_EDX</span><span class="p">,</span> <span class="mh">0x7890</span><span class="p">)</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a>    <span class="c1"># emulate code in infinite time &amp; unlimited instructions</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a>    <span class="n">mu</span><span class="o">.</span><span class="n">emu_start</span><span class="p">(</span><span class="n">ADDRESS</span><span class="p">,</span> <span class="n">ADDRESS</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">X86_CODE32</span><span class="p">))</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a>    <span class="c1"># now print out some registers</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Emulation done. Below is the CPU context"</span><span class="p">)</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a>    <span class="n">r_ecx</span> <span class="o">=</span> <span class="n">mu</span><span class="o">.</span><span class="n">reg_read</span><span class="p">(</span><span class="n">UC_X86_REG_ECX</span><span class="p">)</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a>    <span class="n">r_edx</span> <span class="o">=</span> <span class="n">mu</span><span class="o">.</span><span class="n">reg_read</span><span class="p">(</span><span class="n">UC_X86_REG_EDX</span><span class="p">)</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt;&gt; ECX = 0x</span><span class="si">%x</span><span class="s2">"</span> <span class="o">%</span><span class="n">r_ecx</span><span class="p">)</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt;&gt; EDX = 0x</span><span class="si">%x</span><span class="s2">"</span> <span class="o">%</span><span class="n">r_edx</span><span class="p">)</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="k">except</span> <span class="n">UcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"ERROR: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+这段代码可以很简单且直观的大致看出 unicorn 的使用框架和能处理的任务：<p></p>
 <ol>
+<li>初始化模拟器，指定架构和模式</li>
+<li>分配内存大小和地址并写入要模拟的机器码</li>
+<li>初始化寄存器</li>
+<li>开始模拟</li>
+<li>读取最终结果寄存器的值</li>
+</ol>
+<p>我们很直观的感受到 Unicorn 就是一个可以模拟执行机器码的 cpu 模拟器。</p>
+<h3 id="_4">模拟构建流程<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<p>当我们希望使用 Unicorn 来构建一个模拟器来模拟一段机器码时，正常来说，我们应该完成以下这些步骤：</p>
+<h4 id="1">1. 模拟器初始化<a class="headerlink" href="#1" title="Permanent link">¶</a></h4>
+<p>使用 <code>Uc()</code> 可以初始化一个模拟器，此时我们需要选择我们需要的 cpu 架构，比如我们需要使用 32bit 的 x86 架构，那么我们构建模拟器时就应该选择 <code>mu = Uc(UC_ARCH_X86, UC_MODE_32)</code> 来初始化模拟器。</p>
+<h4 id="2">2. 内存分配与写入<a class="headerlink" href="#2" title="Permanent link">¶</a></h4>
+<ul>
 <li>
-<p>安装frida客户端
-    </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>frida-tools
-</span></code></pre></div></td></tr></tbody></table></div>
-    可以运行<code>frida-ps</code>测试是否安装成功<p></p>
+<p>我们需要手动为模拟器分配内存空间 <code>mu.mem_map(ADDRESS, 2 * 1024 * 1024)</code> 这个接口会为第一个参数的地址分配第二个参数大小的内存空间，当我们需要额外开辟堆栈在其他起始地址的内存空间时，我们可以多次调用 <code>mu.mem_map()</code> 来往其他多个起始地址出分配内存。</p>
 </li>
 <li>
-<p>如果在本机注入，则可以直接使用，例如：
-    </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>frida<span class="w"> </span>-p<span class="w"> </span>&lt;pid&gt;<span class="w"> </span>-l<span class="w"> </span>&lt;script.js&gt;
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>frida<span class="w"> </span>-n<span class="w"> </span>&lt;process_name&gt;<span class="w"> </span>-l<span class="w"> </span>&lt;script.js&gt;
-</span></code></pre></div></td></tr></tbody></table></div><p></p>
+<p>使用 <code>mu.mem_write(ADDRESS, X86_CODE32)</code> 可以往第一个参数所代表的地址写入第二个参数的值。</p>
 </li>
-<li>
-<p>在目标设备配置对应版本的frida-server并运行
-    &gt; 通过远程连接方式，端口转发方式连接，详见<a href="#_8">绕过端口检测</a></p>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>frida-server
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>./frida-server
+</ul>
+<h4 id="3">3. 寄存器初始化<a class="headerlink" href="#3" title="Permanent link">¶</a></h4>
+<p>使用 <code>mu.reg_write()</code> 可以初始化寄存器的值，比如 <code>mu.reg_write(UC_X86_REG_ECX, 0x1234)</code>。</p>
+<h4 id="4">4. 开始模拟<a class="headerlink" href="#4" title="Permanent link">¶</a></h4>
+<p>使用 <code>mu.emu_start()</code> 可以开始模拟代码的执行，第一个参数传入起始地址，第二个参数传入最终地址。</p>
+<h4 id="5">5. 读取最终结果寄存器的值<a class="headerlink" href="#5" title="Permanent link">¶</a></h4>
+<p>使用 <code>mu.reg_read()</code> 可以读取寄存器的值，比如 <code>r_ecx = mu.reg_read(UC_X86_REG_ECX)</code>。</p>
+<h2 id="_5">进阶使用<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<h3 id="_6">汇编转机器码<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<p>在上述范例中我们需要手写机器码，其实 Unicorn 有一个同源兄弟专门可以将汇编代码转换成机器码的引擎 Keystone Engine，我们可以使用它来生成机器码：</p>
+<p></p><div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keystone</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ks</span><span class="p">,</span> <span class="n">KS_ARCH_ARM64</span><span class="p">,</span> <span class="n">KS_MODE_LITTLE_ENDIAN</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">CODE_ADDR</span>  <span class="o">=</span> <span class="mh">0x100000</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="n">ASM_CODE</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"""</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="s2">start:</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="s2">    cbz     x1, done</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="s2">loop:</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="s2">    ldrb    w2, [x0]</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="s2">    add     w2, w2, #1</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="s2">    strb    w2, [x0], #1</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="s2">    subs    x1, x1, #1</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="s2">    b.ne    loop</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="s2">done:</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="s2">    ret</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="s2">"""</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">assemble_arm64</span><span class="p">(</span><span class="n">asm_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">base_addr</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">    </span><span class="sd">"""用 Keystone 组装 ARM64 汇编"""</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23"></a>    <span class="n">ks</span> <span class="o">=</span> <span class="n">Ks</span><span class="p">(</span><span class="n">KS_ARCH_ARM64</span><span class="p">,</span> <span class="n">KS_MODE_LITTLE_ENDIAN</span><span class="p">)</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a>    <span class="n">encoding</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ks</span><span class="o">.</span><span class="n">asm</span><span class="p">(</span><span class="n">asm_code</span><span class="p">,</span> <span class="n">addr</span><span class="o">=</span><span class="n">base_addr</span><span class="p">)</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a>    <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="n">code</span> <span class="o">=</span> <span class="n">assemble_arm64</span><span class="p">(</span><span class="n">ASM_CODE</span><span class="p">,</span> <span class="n">CODE_ADDR</span><span class="p">)</span>
 </span></code></pre></div></td></tr></tbody></table></div>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># 客户端通过 USB 连接设备，-n 是可以省略的</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>frida<span class="w"> </span>-U<span class="w"> </span>-n<span class="w"> </span>&lt;package_name&gt;<span class="w"> </span>-l<span class="w"> </span>hook.js
-</span></code></pre></div></td></tr></tbody></table></div>
+这里生成的 code 就可以直接像上面 <code>mu.mem_write(CODE_ADDR, code)</code> 一样作为机器码写入内存中进行模拟了。<p></p>
+<h3 id="_7">反汇编机器码<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<p>在运行时，我们从内存中读取到机器码时，我们可以使用同源兄弟 Capstone Engine 来将机器码反汇编成汇编指令：</p>
 <div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -1955,205 +2133,68 @@
 <span class="normal"><a href="#__codelineno-4-11">11</a></span>
 <span class="normal"><a href="#__codelineno-4-12">12</a></span>
 <span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">frida</span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">capstone</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cs</span><span class="p">,</span> <span class="n">CS_ARCH_ARM64</span><span class="p">,</span> <span class="n">CS_MODE_LITTLE_ENDIAN</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1"># 获取 USB 设备（等同于 -U）</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="n">device</span> <span class="o">=</span> <span class="n">frida</span><span class="o">.</span><span class="n">get_usb_device</span><span class="p">()</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="c1"># 附加到指定应用（包名）</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="n">session</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="s2">"com.example.app"</span><span class="p">)</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="c1"># 注入脚本</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="n">script</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">create_script</span><span class="p">(</span><span class="s2">"""</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="s2">console.log("Hello from Frida script!");</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="s2">"""</span><span class="p">)</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="n">script</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">disasm_one</span><span class="p">(</span><span class="n">md</span><span class="p">:</span> <span class="n">Cs</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="sd">"""反汇编单条指令"""</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>    <span class="n">insns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">md</span><span class="o">.</span><span class="n">disasm</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">address</span><span class="p">))</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">insns</span><span class="p">:</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"0x</span><span class="si">{</span><span class="n">address</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2">: &lt;invalid&gt;"</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span class="n">insn</span> <span class="o">=</span> <span class="n">insns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">"0x</span><span class="si">{</span><span class="n">insn</span><span class="o">.</span><span class="n">address</span><span class="si">:</span><span class="s2">016x</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">insn</span><span class="o">.</span><span class="n">mnemonic</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">insn</span><span class="o">.</span><span class="n">op_str</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="n">md</span> <span class="o">=</span> <span class="n">Cs</span><span class="p">(</span><span class="n">CS_ARCH_ARM64</span><span class="p">,</span> <span class="n">CS_MODE_LITTLE_ENDIAN</span><span class="p">)</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="n">raw</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">mu</span><span class="o">.</span><span class="n">mem_read</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="n">line</span> <span class="o">=</span> <span class="n">disasm_one</span><span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="n">raw</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </span></code></pre></div></td></tr></tbody></table></div>
-</li>
-<li>
-<p>自动补全配置</p>
-<p><a href="https://github.com/oleavr/frida-agent-example">frida-agent-example</a></p>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/oleavr/frida-agent-example.git
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>frida-agent-example/
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>npm<span class="w"> </span>install
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>frida<span class="w"> </span>-U<span class="w"> </span>-f<span class="w"> </span>com.example.android<span class="w"> </span>-l<span class="w"> </span>_agent.js
+<h3 id="hook">HOOK<a class="headerlink" href="#hook" title="Permanent link">¶</a></h3>
+<p>Unicorn 还提供了一些 hook 接口，可以在模拟过程中 hook 指令执行、内存读写等事件。</p>
+<p></p><div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>    <span class="c1"># ========= hook：代码执行 =========</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hook_code</span><span class="p">(</span><span class="n">uc</span><span class="p">:</span> <span class="n">Uc</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">user_data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>        <span class="n">raw</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">uc</span><span class="o">.</span><span class="n">mem_read</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>        <span class="n">line</span> <span class="o">=</span> <span class="n">disasm_one</span><span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="n">raw</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>        <span class="n">x0</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">reg_read</span><span class="p">(</span><span class="n">UC_ARM64_REG_X0</span><span class="p">)</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>        <span class="n">x1</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">reg_read</span><span class="p">(</span><span class="n">UC_ARM64_REG_X1</span><span class="p">)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>        <span class="n">x2</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">reg_read</span><span class="p">(</span><span class="n">UC_ARM64_REG_X2</span><span class="p">)</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">    | X0=0x</span><span class="si">{</span><span class="n">x0</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2"> X1=0x</span><span class="si">{</span><span class="n">x1</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2"> X2=0x</span><span class="si">{</span><span class="n">x2</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a>    <span class="c1"># ========= hook：内存读 =========</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hook_mem_read</span><span class="p">(</span><span class="n">uc</span><span class="p">:</span> <span class="n">Uc</span><span class="p">,</span> <span class="n">access</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">user_data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    [mem] READ  addr=0x</span><span class="si">{</span><span class="n">address</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2">, size=</span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a>    <span class="c1"># ========= hook：内存写 =========</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hook_mem_write</span><span class="p">(</span><span class="n">uc</span><span class="p">:</span> <span class="n">Uc</span><span class="p">,</span> <span class="n">access</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">user_data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    [mem] WRITE addr=0x</span><span class="si">{</span><span class="n">address</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2">, size=</span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">, value=0x</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="n">mu</span><span class="o">.</span><span class="n">hook_add</span><span class="p">(</span><span class="n">UC_HOOK_CODE</span><span class="p">,</span> <span class="n">hook_code</span><span class="p">)</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a>    <span class="n">mu</span><span class="o">.</span><span class="n">hook_add</span><span class="p">(</span><span class="n">UC_HOOK_MEM_READ</span><span class="p">,</span> <span class="n">hook_mem_read</span><span class="p">)</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a>    <span class="n">mu</span><span class="o">.</span><span class="n">hook_add</span><span class="p">(</span><span class="n">UC_HOOK_MEM_WRITE</span><span class="p">,</span> <span class="n">hook_mem_write</span><span class="p">)</span>
 </span></code></pre></div></td></tr></tbody></table></div>
-<p>此时在 <code>./frida-agent-example/agent/</code> 目录下编写脚本即可获得自动补全功能</p>
-</li>
-</ol>
-<h2 id="_2">基础使用<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<ul>
-<li>frida使用python将javascript脚本注入到目标进程中运行，从而实现hook功能</li>
-<li>javascript基础语法较为简单，但是在frida中有大量自定义接口，需通过文档与脚本阅读理解学习，我将会在本帖按照随心而定的顺序介绍一些常用的接口。</li>
-</ul>
-<h3 id="_3">注入模式<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<ul>
-<li>attach 附加到正在运行的进程，因此这种模式我们常通过 PID 注入</li>
-<li>spawn 重启进程在运行开头注入，即加入-f参数，因此这种模式我们常通过包名注入</li>
-</ul>
-<h3 id="_4">脚本参数<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-6-10">10</a></span>
-<span class="normal"><a href="#__codelineno-6-11">11</a></span>
-<span class="normal"><a href="#__codelineno-6-12">12</a></span>
-<span class="normal"><a href="#__codelineno-6-13">13</a></span>
-<span class="normal"><a href="#__codelineno-6-14">14</a></span>
-<span class="normal"><a href="#__codelineno-6-15">15</a></span>
-<span class="normal"><a href="#__codelineno-6-16">16</a></span>
-<span class="normal"><a href="#__codelineno-6-17">17</a></span>
-<span class="normal"><a href="#__codelineno-6-18">18</a></span>
-<span class="normal"><a href="#__codelineno-6-19">19</a></span>
-<span class="normal"><a href="#__codelineno-6-20">20</a></span>
-<span class="normal"><a href="#__codelineno-6-21">21</a></span>
-<span class="normal"><a href="#__codelineno-6-22">22</a></span>
-<span class="normal"><a href="#__codelineno-6-23">23</a></span>
-<span class="normal"><a href="#__codelineno-6-24">24</a></span>
-<span class="normal"><a href="#__codelineno-6-25">25</a></span>
-<span class="normal"><a href="#__codelineno-6-26">26</a></span>
-<span class="normal"><a href="#__codelineno-6-27">27</a></span>
-<span class="normal"><a href="#__codelineno-6-28">28</a></span>
-<span class="normal"><a href="#__codelineno-6-29">29</a></span>
-<span class="normal"><a href="#__codelineno-6-30">30</a></span>
-<span class="normal"><a href="#__codelineno-6-31">31</a></span>
-<span class="normal"><a href="#__codelineno-6-32">32</a></span>
-<span class="normal"><a href="#__codelineno-6-33">33</a></span>
-<span class="normal"><a href="#__codelineno-6-34">34</a></span>
-<span class="normal"><a href="#__codelineno-6-35">35</a></span>
-<span class="normal"><a href="#__codelineno-6-36">36</a></span>
-<span class="normal"><a href="#__codelineno-6-37">37</a></span>
-<span class="normal"><a href="#__codelineno-6-38">38</a></span>
-<span class="normal"><a href="#__codelineno-6-39">39</a></span>
-<span class="normal"><a href="#__codelineno-6-40">40</a></span>
-<span class="normal"><a href="#__codelineno-6-41">41</a></span>
-<span class="normal"><a href="#__codelineno-6-42">42</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="hll">-h,<span class="w"> </span>--help<span class="w">            </span>显示帮助信息并退出
-</span></span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="hll">-D<span class="w"> </span>ID,<span class="w"> </span>--device<span class="w"> </span>ID<span class="w">    </span>连接到指定ID的设备
-</span></span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="hll">-U,<span class="w"> </span>--usb<span class="w">             </span>连接到USB设备
-</span></span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="hll">-R,<span class="w"> </span>--remote<span class="w">          </span>连接到远程frida-server
-</span></span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>-H<span class="w"> </span>HOST,<span class="w"> </span>--host<span class="w"> </span>HOST<span class="w">  </span>连接到指定主机的远程frida-server
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a>--certificate<span class="w"> </span>CERTIFICATE<span class="w"> </span>与主机建立TLS连接,期望证书为CERTIFICATE
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>--origin<span class="w"> </span>ORIGIN<span class="w">       </span>连接到远程服务器时将<span class="s2">"Origin"</span>头设置为ORIGIN
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>--token<span class="w"> </span>TOKEN<span class="w">         </span>使用TOKEN对主机进行身份验证
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a>--keepalive-interval<span class="w"> </span>INTERVAL<span class="w"> </span>设置keepalive间隔<span class="o">(</span>秒<span class="o">)</span>,或设为0禁用<span class="o">(</span>默认为-1,根据传输方式自动选择<span class="o">)</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a>--p2p<span class="w">                 </span>与目标建立点对点连接
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a>--stun-server<span class="w"> </span>ADDRESS<span class="w"> </span>设置与--p2p一起使用的STUN服务器地址
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a>--relay<span class="w"> </span>address,username,password,turn-<span class="o">{</span>udp,tcp,tls<span class="o">}</span><span class="w"> </span>添加与--p2p一起使用的中继
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a>-f<span class="w"> </span>TARGET,<span class="w"> </span>--file<span class="w"> </span>TARGET<span class="w"> </span>启动文件
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a>-F,<span class="w"> </span>--attach-frontmost<span class="w"> </span>附加到前台应用程序
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="hll">-n<span class="w"> </span>NAME,<span class="w"> </span>--attach-name<span class="w"> </span>NAME<span class="w"> </span>附加到指定名称的进程
-</span></span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a>-N<span class="w"> </span>IDENTIFIER,<span class="w"> </span>--attach-identifier<span class="w"> </span>IDENTIFIER<span class="w"> </span>附加到指定标识符的进程
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="hll">-p<span class="w"> </span>PID,<span class="w"> </span>--attach-pid<span class="w"> </span>PID<span class="w"> </span>附加到指定PID的进程
-</span></span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a>-W<span class="w"> </span>PATTERN,<span class="w"> </span>--await<span class="w"> </span>PATTERN<span class="w"> </span>等待匹配PATTERN的进程启动
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a>--stdio<span class="w"> </span><span class="o">{</span>inherit,pipe<span class="o">}</span><span class="w"> </span>启动时的stdio行为<span class="o">(</span>默认为<span class="s2">"inherit"</span><span class="o">)</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a>--aux<span class="w"> </span>option<span class="w">          </span>启动时设置辅助选项,如<span class="s2">"uid=(int)42"</span><span class="o">(</span>支持的类型有：string,<span class="w"> </span>bool,<span class="w"> </span>int<span class="o">)</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a>--realm<span class="w"> </span><span class="o">{</span>native,emulated<span class="o">}</span><span class="w"> </span>附加的运行环境
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a>--runtime<span class="w"> </span><span class="o">{</span>qjs,v8<span class="o">}</span><span class="w">    </span>使用的脚本运行时
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a>--debug<span class="w">               </span>启用Node.js兼容的脚本调试器
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a>--squelch-crash<span class="w">       </span>如果启用,将不在控制台输出崩溃报告
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a>-O<span class="w"> </span>FILE,<span class="w"> </span>--options-file<span class="w"> </span>FILE<span class="w"> </span>包含额外命令行选项的文本文件
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a>--version<span class="w">             </span>显示程序版本号并退出
-</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="hll">-l<span class="w"> </span>SCRIPT,<span class="w"> </span>--load<span class="w"> </span>SCRIPT<span class="w"> </span>加载脚本
-</span></span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a>-P<span class="w"> </span>PARAMETERS_JSON,<span class="w"> </span>--parameters<span class="w"> </span>PARAMETERS_JSON<span class="w"> </span>以JSON格式传递参数,与Gadget相同
-</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a>-C<span class="w"> </span>USER_CMODULE,<span class="w"> </span>--cmodule<span class="w"> </span>USER_CMODULE<span class="w"> </span>加载C模块
-</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30"></a>--toolchain<span class="w"> </span><span class="o">{</span>any,internal,external<span class="o">}</span><span class="w"> </span>编译源代码时使用的CModule工具链
-</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31"></a>-c<span class="w"> </span>CODESHARE_URI,<span class="w"> </span>--codeshare<span class="w"> </span>CODESHARE_URI<span class="w"> </span>加载代码共享URI
-</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32"></a>-e<span class="w"> </span>CODE,<span class="w"> </span>--eval<span class="w"> </span>CODE<span class="w">  </span>执行代码
-</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33"></a>-q<span class="w">                    </span>静默模式<span class="o">(</span>无提示符<span class="o">)</span>,执行-l和-e后退出
-</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34"></a>-t<span class="w"> </span>TIMEOUT,<span class="w"> </span>--timeout<span class="w"> </span>TIMEOUT<span class="w"> </span>静默模式下等待退出的秒数
-</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35"></a>--pause<span class="w">               </span>启动程序后保持主线程暂停
-</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36"></a>-o<span class="w"> </span>LOGFILE,<span class="w"> </span>--output<span class="w"> </span>LOGFILE<span class="w"> </span>输出到日志文件
-</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37"></a>--eternalize<span class="w">          </span>退出前永久化脚本
-</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38"></a>--exit-on-error<span class="w">       </span>脚本中遇到异常时以代码1退出
-</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39"></a>--kill-on-exit<span class="w">        </span>Frida退出时杀死启动的程序
-</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40"></a>--auto-perform<span class="w">        </span>用Java.perform包装输入的代码
-</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41"></a>--auto-reload<span class="w">         </span>启用提供的脚本和C模块的自动重载<span class="o">(</span>默认启用,将来将成为必需<span class="o">)</span>
-</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42"></a>--no-auto-reload<span class="w">      </span>禁用提供的脚本和C模块的自动重载
-</span></code></pre></div></td></tr></tbody></table></div>
-<h3 id="_5">获取进程信息<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<h3 id="_6">插桩<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
-<ol>
-<li>Interceptor.attach(target, callbacks[, data])<ul>
-<li>target: 需要hook的函数地址</li>
-<li>callbacks: 回调函数对象</li>
-<li>data: 可选数据对象</li>
-</ul>
-</li>
-</ol>
-<h2 id="frida_2">frida 检测隐藏<a class="headerlink" href="#frida_2" title="Permanent link">¶</a></h2>
-<h3 id="_7">文件名检测<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
-<ul>
-<li>检测：frida-server 文件名</li>
-<li>绕过：修改frida-server的文件名</li>
-</ul>
-<h3 id="_8">端口检测<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
-<ul>
-<li>检测：frida 默认 27042 和 27043 端口，通过检测这两个端口可以检测frida的存在</li>
-<li>
-<p>绕过：修改frida-server的端口号
-    </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>./frida-server<span class="w"> </span>-l<span class="w"> </span><span class="m">127</span>.0.0.1:&lt;port&gt;
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>adb<span class="w"> </span>forward<span class="w"> </span>tcp:&lt;port&gt;<span class="w"> </span>tcp:&lt;port&gt;
-</span></code></pre></div></td></tr></tbody></table></div>
-        ??? note "为什么需要端口转发"
-        USB 连接不是 TCP/IP 网络连接 虽然你通过 USB 连接了 Android 设备，但 USB 并不自动暴露设备上的 TCP 端口给你的电脑。
-        你的电脑无法直接访问设备上的 127.0.0.1:1234 或 0.0.0.0:1234。
-        <br>./frida-server在 Android 设备上监听一个 TCP 端口。但你的电脑无法直接访问这个端口，除非你通过网络或端口转发建立桥梁。
-        <br>adb forward 通过端口转发告诉 ADB：把你电脑上的 localhost:1234 映射到 Android 设备上的 localhost:1234。
-        这样你就可以在电脑上通过 127.0.0.1:1234 访问设备上的 frida-server。<p></p>
-<p>此时不能使用 -U 自动连接，应该：
-</p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>frida -H 127.0.0.1:&lt;port&gt; -n 进程名 -l hook.js
-</span></code></pre></div></td></tr></tbody></table></div>
-而如果需要 python 脚本连接，则为：<p></p>
-<div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-9-10">10</a></span>
-<span class="normal"><a href="#__codelineno-9-11">11</a></span>
-<span class="normal"><a href="#__codelineno-9-12">12</a></span>
-<span class="normal"><a href="#__codelineno-9-13">13</a></span>
-<span class="normal"><a href="#__codelineno-9-14">14</a></span>
-<span class="normal"><a href="#__codelineno-9-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">frida</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="c1"># 添加远程设备（通过 adb 转发到本地端口）</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">device_manager</span> <span class="o">=</span> <span class="n">frida</span><span class="o">.</span><span class="n">get_device_manager</span><span class="p">()</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="n">device</span> <span class="o">=</span> <span class="n">device_manager</span><span class="o">.</span><span class="n">add_remote_device</span><span class="p">(</span><span class="s2">"127.0.0.1:&lt;port&gt;"</span><span class="p">)</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="c1"># 附加到目标进程（包名）</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="n">session</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="s2">"com.example.app"</span><span class="p">)</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="c1"># 创建并加载脚本</span>
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="n">script</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">create_script</span><span class="p">(</span><span class="s2">"""</span>
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="s2">console.log("Hello from Frida via port forwarding!");</span>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="s2">"""</span><span class="p">)</span>
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="n">script</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-<h3 id="_9">双进程保护<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
-<ul>
-<li>检测：进程自己调试自己，使无法被 frida 附加</li>
-<li>绕过：使用 spwn 方式启动程序
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>frida<span class="w"> </span>-U<span class="w"> </span>-f<span class="w"> </span>进程名<span class="w"> </span>-l<span class="w"> </span>hook.js
-</span></code></pre></div></td></tr></tbody></table></div></li>
-</ul>
-</li>
-</ul>
+上面这段代码展示了如何使用 Unicorn 的 hook 接口来 hook 代码执行、内存读写事件，在 hook 函数中我们可以获取当前指令的地址、大小、寄存器值等信息，并且在代码执行到特定地址时停止模拟。<p></p>
 
 
 
@@ -2192,7 +2233,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="../JADX/" class="md-footer__link md-footer__link--prev" aria-label="上一页: JADX">
+          <a href="../frida/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Frida">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -2202,20 +2243,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                JADX
+                Frida
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Unicorn-engine/" class="md-footer__link md-footer__link--next" aria-label="下一页: Unicorn">
+          <a href="../../../courses/OS/" class="md-footer__link md-footer__link--next" aria-label="下一页: 概述">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Unicorn
+                概述
               </div>
             </div>
             <div class="md-footer__button md-icon">

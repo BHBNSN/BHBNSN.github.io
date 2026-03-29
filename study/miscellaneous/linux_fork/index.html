@@ -9,13 +9,13 @@
         <meta name="author" content="N0rth5ea">
       
       
-        <link rel="canonical" href="https://blog.n0rth5ea.online/study/courses/OS/">
+        <link rel="canonical" href="https://blog.n0rth5ea.online/study/miscellaneous/linux_fork/">
       
       
-        <link rel="prev" href="../../reverse/tools/Unicorn-engine/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="Scheduling/">
+        <link rel="next" href="../endian/">
       
       
       <link rel="icon" href="../../../images/logo.png">
@@ -23,7 +23,7 @@
     
     
       
-        <title>概述 - N0rth5ea's Capsule</title>
+        <title>Linux 进程 fork 机制 - N0rth5ea's Capsule</title>
       
     
     
@@ -105,7 +105,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#linux-fork" class="md-skip">
           跳转至
         </a>
       
@@ -138,7 +138,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              概述
+              Linux 进程 fork 机制
             
           </span>
         </div>
@@ -889,8 +889,6 @@
                 
   
   
-    
-  
   
   
     
@@ -901,11 +899,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -921,7 +919,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             课程
@@ -932,8 +930,6 @@
                 
   
   
-    
-  
   
   
     
@@ -944,11 +940,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1">
         
           
           <label class="md-nav__link" for="__nav_2_3_1" id="__nav_2_3_1_label" tabindex="0">
@@ -964,7 +960,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3_1">
             <span class="md-nav__icon md-icon"></span>
             操作系统
@@ -975,32 +971,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    概述
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../courses/OS/" class="md-nav__link">
         
   
   
@@ -1011,110 +985,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      计算机系统概述
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="计算机系统概述">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      操作系统概念
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      操作系统特征
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="操作系统特征">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      并发
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      共享
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      虚拟
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      异步
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      进程
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1127,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Scheduling/" class="md-nav__link">
+      <a href="../../courses/OS/Scheduling/" class="md-nav__link">
         
   
   
@@ -1500,6 +1370,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1510,11 +1382,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked="">
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
@@ -1530,7 +1402,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             杂货铺
@@ -1544,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../miscellaneous/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1564,10 +1436,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../miscellaneous/linux_fork/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1578,6 +1459,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1590,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../miscellaneous/endian/" class="md-nav__link">
+      <a href="../endian/" class="md-nav__link">
         
   
   
@@ -1875,21 +1757,19 @@
   
 
 
-<h1 id="_1">操作系统<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2025-11-06"><span class="material-icons" data-icon="doc_created"></span><time datetime="2025-11-06T14:57:45.013607+08:00">2025-11-06 14:57:45</time></span><span data-tippy-content="" data-tippy-raw="2025-12-11"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2025-12-11T00:18:35+08:00">2025-12-11 00:18:35</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:147256685+BHBNSN@users.noreply.github.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
-
-<h2 id="_2">计算机系统概述<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<h3 id="_3">操作系统概念<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<p>操作系统（ Operat lng System ， OS ）是指控制和管理整个计算机系统的硬件与软件资源，合理地组织、调度计算机的工作与资源的分配，进而为用户和其他软件提供方便接口与环境的程序集合。
-操作系统是计算机系统中最基本的系统软件。</p>
-<h3 id="_4">操作系统特征<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<h4 id="_5">并发<a class="headerlink" href="#_5" title="Permanent link">¶</a></h4>
-<p>宏观上同时发生，微观上交替发生（任意时刻只在做一个）</p>
-<p>单核CPU只能并发运行程序，多核CPU可以并行程序</p>
-<h4 id="_6">共享<a class="headerlink" href="#_6" title="Permanent link">¶</a></h4>
-<h4 id="_7">虚拟<a class="headerlink" href="#_7" title="Permanent link">¶</a></h4>
-<h4 id="_8">异步<a class="headerlink" href="#_8" title="Permanent link">¶</a></h4>
-<h3 id="_9">进程<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
+<h1 id="linux-fork">Linux 进程 fork 机制<a class="headerlink" href="#linux-fork" title="Permanent link">¶</a></h1>
+<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-03-29"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-03-29T00:28:10.620392+08:00">2026-03-29 00:28:10</time></span><span data-tippy-content="" data-tippy-raw="2026-03-29"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-03-29T20:08:58+08:00">2026-03-29 20:08:58</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
+<div class="admonition note">
+<p class="admonition-title">参考资料</p>
+<p><a href="https://zhuanlan.zhihu.com/p/53527981" rel="noopener" target="_blank">【知乎】linux 进程 fork()</a></p>
+</div>
+<p>fork 直译是叉子，形象的描述了进程 fork 后分叉的样子，进程 fork 后会复制自身，形成一个新的进程，具体如下：</p>
+<ol>
+<li>父进程调用 fork() 系统调用。</li>
+<li>内核为新进程分配一个新的进程描述符。</li>
+<li>内核会复制父进程的内存，相当于父子进程有着完全一样的虚拟内存，一样的代码逻辑，一样的文件描述符等资源，内核会为子进程分配新的物理内存空间。</li>
+<li>fork() 会为父子进程返回不同的 pid 值，父进程返回子进程的 pid，子进程返回 0，如果返回负数则表明fork失败，程序根据这个返回值判断自己是父进程还是子进程然后进入不同代码逻辑。</li>
+</ol>
 
 
 
@@ -1928,7 +1808,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="../../reverse/tools/Unicorn-engine/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Unicorn">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 概述">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -1938,20 +1818,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                Unicorn
+                概述
               </div>
             </div>
           </a>
         
         
           
-          <a href="Scheduling/" class="md-footer__link md-footer__link--next" aria-label="下一页: 进程调度">
+          <a href="../endian/" class="md-footer__link md-footer__link--next" aria-label="下一页: 大小端序">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                进程调度
+                大小端序
               </div>
             </div>
             <div class="md-footer__button md-icon">
