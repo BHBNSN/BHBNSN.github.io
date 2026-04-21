@@ -9,24 +9,32 @@ body {
 }
 
 /* =========================
-   目录+内容区：半透明背景+圆角
+   📏 内容宽度优化
 ========================= */
-.md-main__inner {
-  background: rgba(255, 255, 255, 0.60);
-  border-radius: 12px;
+.md-grid {
+  max-width: 88%;
 }
-[data-md-color-scheme="slate"] .md-main__inner {
-  background: rgba(30, 30, 30, 0.60);
-  border-radius: 12px;
-}
-
 
 /* =========================
-   毛玻璃：只放在正文内容区
+   主容器本身不承担背景
+========================= */
+.md-main__inner {
+  background: transparent !important;
+}
+
+/* =========================
+   正文区：半透明 + 毛玻璃
 ========================= */
 .md-content {
   position: relative;
   z-index: 0;
+  background: rgba(255, 255, 255, 0.60);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+[data-md-color-scheme="slate"] .md-content {
+  background: rgba(30, 30, 30, 0.60);
 }
 
 .md-content::before {
@@ -40,36 +48,124 @@ body {
   z-index: -1;
   pointer-events: none;
 }
+
 [data-md-color-scheme="slate"] .md-content::before {
   background: rgba(30, 30, 30, 0.18);
 }
 
 /* =========================
-   📏 可选：内容宽度优化
+   侧栏核心原则：
+   不碰 scrollwrap 的高度/滚动
+   只给 inner 做卡片外观
 ========================= */
 
-.md-grid {
-  max-width: 88%;
+/* 保持 scrollwrap 用主题原始行为，别再接管高度、max-height、overflow */
+/* 如果你之前写过 .md-sidebar__scrollwrap 的 min-height / height / max-height / overflow，
+   请删掉，不要再保留任何覆盖 */
+
+/* 左侧主导航卡片 */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary .md-sidebar__inner {
+    position: relative;
+    z-index: 0;
+    margin: 0.45rem 0 0.7rem -0.15rem;
+    padding: 1rem 1rem 1rem 1rem;
+    background: rgba(255, 255, 255, 0.60);
+    border-radius: 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__inner {
+    background: rgba(30, 30, 30, 0.60);
+  }
+
+  .md-sidebar--primary .md-sidebar__inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.18);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__inner::before {
+    background: rgba(30, 30, 30, 0.18);
+  }
+
+  /* 右侧目录卡片 */
+  .md-sidebar--secondary .md-sidebar__inner {
+    position: relative;
+    z-index: 0;
+    margin: 0.45rem -0.05rem 0.7rem 0;
+    padding: 0.95rem 0.8rem 0.85rem 0.95rem;
+    background: rgba(255, 255, 255, 0.60);
+    border-radius: 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  [data-md-color-scheme="slate"] .md-sidebar--secondary .md-sidebar__inner {
+    background: rgba(30, 30, 30, 0.60);
+  }
+
+  .md-sidebar--secondary .md-sidebar__inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.18);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  [data-md-color-scheme="slate"] .md-sidebar--secondary .md-sidebar__inner::before {
+    background: rgba(30, 30, 30, 0.18);
+  }
 }
 
-/* nav link 本身不再制造块感 */
+/* =========================
+   nav link 本身不再制造块感
+========================= */
 .md-nav__link {
   background: transparent !important;
   box-shadow: none !important;
 }
 
-/* =========================
-   🧊 顶部两栏：液态玻璃
-   对应 .md-header + .md-tabs
-========================= */
+/* 标题栏和容器内部透明，避免内部再叠色块 */
+.md-nav__title,
+.md-nav__source,
+.md-nav__container {
+  background: transparent !important;
+  box-shadow: none !important;
+}
 
+/* =========================
+   blog 页侧栏顶部“返回 Blog/文章索引”的那一块
+========================= */
+.md-sidebar--post .md-post__back,
+.md-sidebar--post .md-post__back .md-nav__title,
+.md-sidebar--post .md-post__back .md-nav__container,
+.md-sidebar--post .md-post__back .md-nav__link {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* =========================
+   顶部两栏：液态玻璃
+========================= */
 .md-header,
 .md-tabs {
   background: rgba(208, 241, 255, 0.8);
 }
-[data-md-color-scheme="slate"] .md-header{
-  background: rgba(10, 11, 23, 0.85);
-}
+
+[data-md-color-scheme="slate"] .md-header,
 [data-md-color-scheme="slate"] .md-tabs {
   background: rgba(10, 11, 23, 0.85);
 }
