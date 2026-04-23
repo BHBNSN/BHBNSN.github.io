@@ -9,26 +9,26 @@
         <meta name="author" content="N0rth5ea">
       
       
-        <link rel="canonical" href="https://blog.n0rth5ea.online/blog/">
+        <link rel="canonical" href="https://blog.n0rth5ea.online/blog/2026/03/22/linux-%E8%BF%9B%E7%A8%8B-fork-%E6%9C%BA%E5%88%B6/">
       
       
       
-        <link rel="next" href="..">
+        <link rel="next" href="../../../04/29/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E5%BA%8F/">
       
       
-      <link rel="icon" href="../images/logo.png">
+      <link rel="icon" href="../../../../../images/logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>Blog - N0rth5ea's Capsule</title>
+        <title>Linux 进程 fork 机制 - N0rth5ea's Capsule</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -47,34 +47,34 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/fonts/material-icons.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/tippy/material.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/material.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/tippy/shift-away.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/shift-away.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/tippy/tippy.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/scale.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/tippy/light.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/light.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/backdrop.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/core/core.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/core/core.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/user.config.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/user.config.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -84,7 +84,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
-        </style><script src="../assets/javascripts/toggle-sidebar.js"></script></head>
+        </style><script src="../../../../../assets/javascripts/toggle-sidebar.js"></script></head>
   
   
     
@@ -103,7 +103,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#linux-fork" class="md-skip">
           跳转至
         </a>
       
@@ -117,9 +117,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="N0rth5ea's Capsule" class="md-header__button md-logo" aria-label="N0rth5ea's Capsule" data-md-component="logo">
+    <a href="../../../../.." title="N0rth5ea's Capsule" class="md-header__button md-logo" aria-label="N0rth5ea's Capsule" data-md-component="logo">
       
-  <img src="../images/logo.png" alt="logo">
+  <img src="../../../../../images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -136,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Linux 进程 fork 机制
             
           </span>
         </div>
@@ -256,7 +256,7 @@
   
   
     <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+      <a href="../../../../" class="md-tabs__link">
         
   
   
@@ -275,7 +275,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../../../../.." class="md-tabs__link">
         
   
   
@@ -310,7 +310,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../study/reverse/tools/ida_pro/" class="md-tabs__link">
+        <a href="../../../../../study/reverse/tools/ida_pro/" class="md-tabs__link">
           
   
   
@@ -334,7 +334,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../friends/" class="md-tabs__link">
+      <a href="../../../../../friends/" class="md-tabs__link">
         
   
   
@@ -358,7 +358,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -371,9 +373,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="N0rth5ea's Capsule" class="md-nav__button md-logo" aria-label="N0rth5ea's Capsule" data-md-component="logo">
+    <a href="../../../../.." title="N0rth5ea's Capsule" class="md-nav__button md-logo" aria-label="N0rth5ea's Capsule" data-md-component="logo">
       
-  <img src="../images/logo.png" alt="logo">
+  <img src="../../../../../images/logo.png" alt="logo">
 
     </a>
     N0rth5ea's Capsule
@@ -401,19 +403,10 @@
   
   
     
-      
-    
   
   
     <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="../../../../" class="md-nav__link">
         
   
   
@@ -424,7 +417,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -436,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../../../.." class="md-nav__link">
         
   
   
@@ -581,7 +573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/reverse/tools/ida_pro/" class="md-nav__link">
+      <a href="../../../../../study/reverse/tools/ida_pro/" class="md-nav__link">
         
   
   
@@ -604,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/reverse/tools/JADX/" class="md-nav__link">
+      <a href="../../../../../study/reverse/tools/JADX/" class="md-nav__link">
         
   
   
@@ -627,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/reverse/tools/frida/" class="md-nav__link">
+      <a href="../../../../../study/reverse/tools/frida/" class="md-nav__link">
         
   
   
@@ -650,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/reverse/tools/Unicorn-engine/" class="md-nav__link">
+      <a href="../../../../../study/reverse/tools/Unicorn-engine/" class="md-nav__link">
         
   
   
@@ -722,7 +714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/reverse/assembly/" class="md-nav__link">
+      <a href="../../../../../study/reverse/assembly/" class="md-nav__link">
         
   
   
@@ -745,7 +737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/reverse/assembly/x86_64.md" class="md-nav__link">
+      <a href="../../../../../study/reverse/assembly/x86_64.md" class="md-nav__link">
         
   
   
@@ -768,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/reverse/assembly/arm64/" class="md-nav__link">
+      <a href="../../../../../study/reverse/assembly/arm64/" class="md-nav__link">
         
   
   
@@ -840,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/reverse/hook/index.md" class="md-nav__link">
+      <a href="../../../../../study/reverse/hook/index.md" class="md-nav__link">
         
   
   
@@ -863,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/reverse/hook/inline_hook.md" class="md-nav__link">
+      <a href="../../../../../study/reverse/hook/inline_hook.md" class="md-nav__link">
         
   
   
@@ -943,7 +935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/android/theory/" class="md-nav__link">
+      <a href="../../../../../study/android/theory/" class="md-nav__link">
         
   
   
@@ -1007,7 +999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/android/aosp/" class="md-nav__link">
+      <a href="../../../../../study/android/aosp/" class="md-nav__link">
         
   
   
@@ -1030,7 +1022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/android/aosp/zygote_startup/" class="md-nav__link">
+      <a href="../../../../../study/android/aosp/zygote_startup/" class="md-nav__link">
         
   
   
@@ -1053,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/android/aosp/zygote_fork/" class="md-nav__link">
+      <a href="../../../../../study/android/aosp/zygote_fork/" class="md-nav__link">
         
   
   
@@ -1174,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/courses/OS/" class="md-nav__link">
+      <a href="../../../../../study/courses/OS/" class="md-nav__link">
         
   
   
@@ -1197,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/courses/OS/Scheduling/" class="md-nav__link">
+      <a href="../../../../../study/courses/OS/Scheduling/" class="md-nav__link">
         
   
   
@@ -1318,7 +1310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/wp/2025-10/qwb_2025/" class="md-nav__link">
+      <a href="../../../../../study/wp/2025-10/qwb_2025/" class="md-nav__link">
         
   
   
@@ -1390,7 +1382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/wp/2025-11/gjs_2025/" class="md-nav__link">
+      <a href="../../../../../study/wp/2025-11/gjs_2025/" class="md-nav__link">
         
   
   
@@ -1462,7 +1454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/wp/2025-12/ciscn%26ccb_2026/" class="md-nav__link">
+      <a href="../../../../../study/wp/2025-12/ciscn%26ccb_2026/" class="md-nav__link">
         
   
   
@@ -1534,7 +1526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../study/wp/2026-03/ccsssc_2026/" class="md-nav__link">
+      <a href="../../../../../study/wp/2026-03/ccsssc_2026/" class="md-nav__link">
         
   
   
@@ -1580,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../friends/" class="md-nav__link">
+      <a href="../../../../../friends/" class="md-nav__link">
         
   
   
@@ -1604,96 +1596,126 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">¶</a></h1>
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-04-29 00:00:00+00:00">2026年4月29日</time></li>
-        
-        
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+                  <span class="md-ellipsis">
+                    回到主页
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    元数据
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"></path></svg>
+                        <time datetime="2026-03-22 00:00:00+00:00" class="md-ellipsis">2026年3月22日</time>
+                      </div>
+                    </li>
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"></path></svg>
+                          <time datetime="2026-03-22 00:00:00+00:00" class="md-ellipsis">2026年3月22日</time>
+                        </div>
+                      </li>
+                    
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"></path></svg>
+                          <span class="md-ellipsis">
+                            
+                              需要 1 分钟阅读时间
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
           
-          <li class="md-meta__item">
             
-              需要 1 分钟阅读时间
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="_1"><a class="toclink" href="2026/04/29/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E5%BA%8F/">大小端序</a></h2>
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></div></div></div></div>
 
-<p>最开始接触大小端序是在学 TEA/XTEA/XXTEA 的时候。逆向时经常看到 IDA 里给出的 key 是按小端序组合的，自己写解密代码时需要手动调整字节顺序。那时候总是记不清区别，也不太理解为什么会有这种差异。</p>
-
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
     
-      <nav class="md-post__action">
-        <a href="2026/04/29/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E5%BA%8F/">
-          继续阅读
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-03-22 00:00:00+00:00">2026年3月22日</time></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 1 分钟阅读时间
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="linux-fork"><a class="toclink" href="2026/03/22/linux-%E8%BF%9B%E7%A8%8B-fork-%E6%9C%BA%E5%88%B6/">Linux 进程 fork 机制</a></h2>
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></div></div></div></div>
-
-
-    
-      <nav class="md-post__action">
-        <a href="2026/03/22/linux-%E8%BF%9B%E7%A8%8B-fork-%E6%9C%BA%E5%88%B6/">
-          继续阅读
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-      
-        
-          
-
-
-
-<nav class="md-pagination">
+  
   
 </nav>
-        
-      
+          
+        </div>
+      </div>
     </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+  
+  
+
+
+<h1 id="linux-fork">Linux 进程 fork 机制<a class="headerlink" href="#linux-fork" title="Permanent link">¶</a></h1>
+<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
+
+<!-- more -->
+
+<div class="admonition note">
+<p class="admonition-title">参考资料</p>
+<p><a href="https://zhuanlan.zhihu.com/p/53527981" rel="noopener" target="_blank">【知乎】linux 进程 fork()</a></p>
+</div>
+<p>fork 直译是叉子，形象的描述了进程 fork 后分叉的样子，进程 fork 后会复制自身，形成一个新的进程，具体如下：</p>
+<ol>
+<li>父进程调用 fork() 系统调用。</li>
+<li>内核为新进程分配一个新的进程描述符。</li>
+<li>内核会复制父进程的内存，相当于父子进程有着完全一样的虚拟内存，一样的代码逻辑，一样的文件描述符等资源，内核会为子进程分配新的物理内存空间。</li>
+<li>fork() 会为父子进程返回不同的 pid 值，父进程返回子进程的 pid，子进程返回 0，如果返回负数则表明fork失败，程序根据这个返回值判断自己是父进程还是子进程然后进入不同代码逻辑。</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
   </div>
 
           
@@ -1712,17 +1734,19 @@
   
     
       
+        
+      
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
         
           
-          <a href=".." class="md-footer__link md-footer__link--next" aria-label="下一页: 首页">
+          <a href="../../../04/29/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E5%BA%8F/" class="md-footer__link md-footer__link--next" aria-label="下一页: 大小端序">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                首页
+                大小端序
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1764,26 +1788,26 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.code.copy", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "toc.integrate", "header.autohide"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["content.code.annotate", "content.code.copy", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "toc.integrate", "header.autohide"], "search": "../../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.js"></script>
       
-        <script src="../assets/javascripts/pangu-init.js"></script>
+        <script src="../../../../../assets/javascripts/pangu-init.js"></script>
       
-        <script src="../assets/document_dates/tippy/popper.min.js"></script>
+        <script src="../../../../../assets/document_dates/tippy/popper.min.js"></script>
       
-        <script src="../assets/document_dates/tippy/tippy.umd.min.js"></script>
+        <script src="../../../../../assets/document_dates/tippy/tippy.umd.min.js"></script>
       
-        <script src="../assets/document_dates/core/default.config.js"></script>
+        <script src="../../../../../assets/document_dates/core/default.config.js"></script>
       
-        <script src="../assets/document_dates/user.config.js"></script>
+        <script src="../../../../../assets/document_dates/user.config.js"></script>
       
-        <script src="../assets/document_dates/core/utils.js"></script>
+        <script src="../../../../../assets/document_dates/core/utils.js"></script>
       
-        <script src="../assets/document_dates/core/core.js"></script>
+        <script src="../../../../../assets/document_dates/core/core.js"></script>
       
     
   

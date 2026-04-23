@@ -726,16 +726,25 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#process" class="md-nav__link">
     <span class="md-ellipsis">
-      获取进程信息
+      进程 Process
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#module" class="md-nav__link">
+    <span class="md-ellipsis">
+      模块 Module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       插桩
     </span>
@@ -759,7 +768,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       文件名检测
     </span>
@@ -768,7 +777,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       端口检测
     </span>
@@ -777,7 +786,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       双进程保护
     </span>
@@ -878,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../assembly/index.md" class="md-nav__link">
+      <a href="../../assembly/" class="md-nav__link">
         
   
   
@@ -1771,7 +1780,7 @@
 
 
 <h1 id="frida">邦邦邦邦 真神来了 Frida<a class="headerlink" href="#frida" title="Permanent link">¶</a></h1>
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2025-10-27"><span class="material-icons" data-icon="doc_created"></span><time datetime="2025-10-27T16:08:26.999648+08:00">2025-10-27 16:08:26</time></span><span data-tippy-content="" data-tippy-raw="2026-03-18"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-03-18T21:36:05+08:00">2026-03-18 21:36:05</time></span><span class="material-icons" data-icon="doc_authors"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:147256685+BHBNSN@users.noreply.github.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="" data-desc-position="bottom"><img class="avatar" src=""></a></div><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="" data-desc-position="bottom"><img class="avatar" src=""></a></div></div></div></div>
+<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2025-10-27"><span class="material-icons" data-icon="doc_created"></span><time datetime="2025-10-27T16:08:26.999648+08:00">2025-10-27 16:08:26</time></span><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span class="material-icons" data-icon="doc_authors"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:147256685+BHBNSN@users.noreply.github.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="" data-desc-position="bottom"><img class="avatar" src=""></a></div><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="" data-desc-position="bottom"><img class="avatar" src=""></a></div></div></div></div>
 
 <div class="admonition warning">
 <p class="admonition-title">注意</p>
@@ -1864,7 +1873,7 @@
 <li>spawn 重启进程在运行开头注入，即加入-f参数，因此这种模式我们常通过包名注入</li>
 </ul>
 <h3 id="_4">脚本参数<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
@@ -1905,51 +1914,61 @@
 <span class="normal"><a href="#__codelineno-6-39">39</a></span>
 <span class="normal"><a href="#__codelineno-6-40">40</a></span>
 <span class="normal"><a href="#__codelineno-6-41">41</a></span>
-<span class="normal"><a href="#__codelineno-6-42">42</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="hll">-h,<span class="w"> </span>--help<span class="w">            </span>显示帮助信息并退出
-</span></span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="hll">-D<span class="w"> </span>ID,<span class="w"> </span>--device<span class="w"> </span>ID<span class="w">    </span>连接到指定ID的设备
-</span></span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="hll">-U,<span class="w"> </span>--usb<span class="w">             </span>连接到USB设备
-</span></span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="hll">-R,<span class="w"> </span>--remote<span class="w">          </span>连接到远程frida-server
-</span></span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>-H<span class="w"> </span>HOST,<span class="w"> </span>--host<span class="w"> </span>HOST<span class="w">  </span>连接到指定主机的远程frida-server
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a>--certificate<span class="w"> </span>CERTIFICATE<span class="w"> </span>与主机建立TLS连接,期望证书为CERTIFICATE
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>--origin<span class="w"> </span>ORIGIN<span class="w">       </span>连接到远程服务器时将<span class="s2">"Origin"</span>头设置为ORIGIN
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>--token<span class="w"> </span>TOKEN<span class="w">         </span>使用TOKEN对主机进行身份验证
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a>--keepalive-interval<span class="w"> </span>INTERVAL<span class="w"> </span>设置keepalive间隔<span class="o">(</span>秒<span class="o">)</span>,或设为0禁用<span class="o">(</span>默认为-1,根据传输方式自动选择<span class="o">)</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a>--p2p<span class="w">                 </span>与目标建立点对点连接
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a>--stun-server<span class="w"> </span>ADDRESS<span class="w"> </span>设置与--p2p一起使用的STUN服务器地址
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a>--relay<span class="w"> </span>address,username,password,turn-<span class="o">{</span>udp,tcp,tls<span class="o">}</span><span class="w"> </span>添加与--p2p一起使用的中继
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a>-f<span class="w"> </span>TARGET,<span class="w"> </span>--file<span class="w"> </span>TARGET<span class="w"> </span>启动文件
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a>-F,<span class="w"> </span>--attach-frontmost<span class="w"> </span>附加到前台应用程序
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="hll">-n<span class="w"> </span>NAME,<span class="w"> </span>--attach-name<span class="w"> </span>NAME<span class="w"> </span>附加到指定名称的进程
-</span></span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a>-N<span class="w"> </span>IDENTIFIER,<span class="w"> </span>--attach-identifier<span class="w"> </span>IDENTIFIER<span class="w"> </span>附加到指定标识符的进程
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="hll">-p<span class="w"> </span>PID,<span class="w"> </span>--attach-pid<span class="w"> </span>PID<span class="w"> </span>附加到指定PID的进程
-</span></span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a>-W<span class="w"> </span>PATTERN,<span class="w"> </span>--await<span class="w"> </span>PATTERN<span class="w"> </span>等待匹配PATTERN的进程启动
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a>--stdio<span class="w"> </span><span class="o">{</span>inherit,pipe<span class="o">}</span><span class="w"> </span>启动时的stdio行为<span class="o">(</span>默认为<span class="s2">"inherit"</span><span class="o">)</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a>--aux<span class="w"> </span>option<span class="w">          </span>启动时设置辅助选项,如<span class="s2">"uid=(int)42"</span><span class="o">(</span>支持的类型有：string,<span class="w"> </span>bool,<span class="w"> </span>int<span class="o">)</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a>--realm<span class="w"> </span><span class="o">{</span>native,emulated<span class="o">}</span><span class="w"> </span>附加的运行环境
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a>--runtime<span class="w"> </span><span class="o">{</span>qjs,v8<span class="o">}</span><span class="w">    </span>使用的脚本运行时
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a>--debug<span class="w">               </span>启用Node.js兼容的脚本调试器
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a>--squelch-crash<span class="w">       </span>如果启用,将不在控制台输出崩溃报告
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a>-O<span class="w"> </span>FILE,<span class="w"> </span>--options-file<span class="w"> </span>FILE<span class="w"> </span>包含额外命令行选项的文本文件
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a>--version<span class="w">             </span>显示程序版本号并退出
-</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="hll">-l<span class="w"> </span>SCRIPT,<span class="w"> </span>--load<span class="w"> </span>SCRIPT<span class="w"> </span>加载脚本
-</span></span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a>-P<span class="w"> </span>PARAMETERS_JSON,<span class="w"> </span>--parameters<span class="w"> </span>PARAMETERS_JSON<span class="w"> </span>以JSON格式传递参数,与Gadget相同
-</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a>-C<span class="w"> </span>USER_CMODULE,<span class="w"> </span>--cmodule<span class="w"> </span>USER_CMODULE<span class="w"> </span>加载C模块
-</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30"></a>--toolchain<span class="w"> </span><span class="o">{</span>any,internal,external<span class="o">}</span><span class="w"> </span>编译源代码时使用的CModule工具链
-</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31"></a>-c<span class="w"> </span>CODESHARE_URI,<span class="w"> </span>--codeshare<span class="w"> </span>CODESHARE_URI<span class="w"> </span>加载代码共享URI
-</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32"></a>-e<span class="w"> </span>CODE,<span class="w"> </span>--eval<span class="w"> </span>CODE<span class="w">  </span>执行代码
-</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33"></a>-q<span class="w">                    </span>静默模式<span class="o">(</span>无提示符<span class="o">)</span>,执行-l和-e后退出
-</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34"></a>-t<span class="w"> </span>TIMEOUT,<span class="w"> </span>--timeout<span class="w"> </span>TIMEOUT<span class="w"> </span>静默模式下等待退出的秒数
-</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35"></a>--pause<span class="w">               </span>启动程序后保持主线程暂停
-</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36"></a>-o<span class="w"> </span>LOGFILE,<span class="w"> </span>--output<span class="w"> </span>LOGFILE<span class="w"> </span>输出到日志文件
-</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37"></a>--eternalize<span class="w">          </span>退出前永久化脚本
-</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38"></a>--exit-on-error<span class="w">       </span>脚本中遇到异常时以代码1退出
-</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39"></a>--kill-on-exit<span class="w">        </span>Frida退出时杀死启动的程序
-</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40"></a>--auto-perform<span class="w">        </span>用Java.perform包装输入的代码
-</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41"></a>--auto-reload<span class="w">         </span>启用提供的脚本和C模块的自动重载<span class="o">(</span>默认启用,将来将成为必需<span class="o">)</span>
-</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42"></a>--no-auto-reload<span class="w">      </span>禁用提供的脚本和C模块的自动重载
+<span class="normal"><a href="#__codelineno-6-42">42</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="hll">-h, --help            显示帮助信息并退出
+</span></span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="hll">-D ID, --device ID    连接到指定ID的设备
+</span></span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="hll">-U, --usb             连接到USB设备
+</span></span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="hll">-R, --remote          连接到远程frida-server
+</span></span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>-H HOST, --host HOST  连接到指定主机的远程frida-server
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a>--certificate CERTIFICATE 与主机建立TLS连接,期望证书为CERTIFICATE
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>--origin ORIGIN       连接到远程服务器时将"Origin"头设置为ORIGIN
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>--token TOKEN         使用TOKEN对主机进行身份验证
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a>--keepalive-interval INTERVAL 设置keepalive间隔(秒),或设为0禁用(默认为-1,根据传输方式自动选择)
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a>--p2p                 与目标建立点对点连接
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a>--stun-server ADDRESS 设置与--p2p一起使用的STUN服务器地址
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a>--relay address,username,password,turn-{udp,tcp,tls} 添加与--p2p一起使用的中继
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a>-f TARGET, --file TARGET 启动文件
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a>-F, --attach-frontmost 附加到前台应用程序
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="hll">-n NAME, --attach-name NAME 附加到指定名称的进程
+</span></span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a>-N IDENTIFIER, --attach-identifier IDENTIFIER 附加到指定标识符的进程
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="hll">-p PID, --attach-pid PID 附加到指定PID的进程
+</span></span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a>-W PATTERN, --await PATTERN 等待匹配PATTERN的进程启动
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a>--stdio {inherit,pipe} 启动时的stdio行为(默认为"inherit")
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a>--aux option          启动时设置辅助选项,如"uid=(int)42"(支持的类型有：string, bool, int)
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a>--realm {native,emulated} 附加的运行环境
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a>--runtime {qjs,v8}    使用的脚本运行时
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a>--debug               启用Node.js兼容的脚本调试器
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a>--squelch-crash       如果启用,将不在控制台输出崩溃报告
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a>-O FILE, --options-file FILE 包含额外命令行选项的文本文件
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a>--version             显示程序版本号并退出
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="hll">-l SCRIPT, --load SCRIPT 加载脚本
+</span></span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a>-P PARAMETERS_JSON, --parameters PARAMETERS_JSON 以JSON格式传递参数,与Gadget相同
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a>-C USER_CMODULE, --cmodule USER_CMODULE 加载C模块
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30"></a>--toolchain {any,internal,external} 编译源代码时使用的CModule工具链
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31"></a>-c CODESHARE_URI, --codeshare CODESHARE_URI 加载代码共享URI
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32"></a>-e CODE, --eval CODE  执行代码
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33"></a>-q                    静默模式(无提示符),执行-l和-e后退出
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34"></a>-t TIMEOUT, --timeout TIMEOUT 静默模式下等待退出的秒数
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35"></a>--pause               启动程序后保持主线程暂停
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36"></a>-o LOGFILE, --output LOGFILE 输出到日志文件
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37"></a>--eternalize          退出前永久化脚本
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38"></a>--exit-on-error       脚本中遇到异常时以代码1退出
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39"></a>--kill-on-exit        Frida退出时杀死启动的程序
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40"></a>--auto-perform        用Java.perform包装输入的代码
+</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41"></a>--auto-reload         启用提供的脚本和C模块的自动重载(默认启用,将来将成为必需)
+</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42"></a>--no-auto-reload      禁用提供的脚本和C模块的自动重载
 </span></code></pre></div></td></tr></tbody></table></div>
-<h3 id="_5">获取进程信息<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<h3 id="_6">插桩<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<h3 id="process">进程 Process<a class="headerlink" href="#process" title="Permanent link">¶</a></h3>
+<p>frida 是注入到指定进程中的，因此肯定是有且只有一个已知的进程，通过 Process 的 api 可以获取到当前进程的一些信息</p>
+<h3 id="module">模块 Module<a class="headerlink" href="#module" title="Permanent link">¶</a></h3>
+<p>Module 一般通过
+- Process.enumerateModules() 枚举
+- Process.findModuleByAddress(address)
+- Process.getModuleByAddress(address)
+- Process.findModuleByName(name)
+- Process.getModuleByName(name) 查找模块
+- Module.load() 加载模块
+来获取一个 Module 对象，其中 find 和 get 的区别在于前者找不到会返回 null，而后者找不到会抛出异常。</p>
+<h3 id="_5">插桩<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <ol>
 <li>Interceptor.attach(target, callbacks[, data])<ul>
 <li>target: 需要hook的函数地址</li>
@@ -1959,12 +1978,12 @@
 </li>
 </ol>
 <h2 id="frida_2">frida 检测隐藏<a class="headerlink" href="#frida_2" title="Permanent link">¶</a></h2>
-<h3 id="_7">文件名检测<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<h3 id="_6">文件名检测<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <ul>
 <li>检测：frida-server 文件名</li>
 <li>绕过：修改frida-server的文件名</li>
 </ul>
-<h3 id="_8">端口检测<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
+<h3 id="_7">端口检测<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <ul>
 <li>检测：frida 默认 27042 和 27043 端口，通过检测这两个端口可以检测frida的存在</li>
 <li>
@@ -2013,7 +2032,7 @@
 </span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>
 </span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="n">script</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
 </span></code></pre></div></td></tr></tbody></table></div>
-<h3 id="_9">双进程保护<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
+<h3 id="_8">双进程保护<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
 <ul>
 <li>检测：进程自己调试自己，使无法被 frida 附加</li>
 <li>绕过：使用 spwn 方式启动程序
