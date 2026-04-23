@@ -1,7 +1,7 @@
 # Zygote 孵化流程
 
 !!! note "相关链接"
-    - [Linux 进程 fork 机制](../../miscellaneous/linux_fork.md#linux-fork)
+    - [Linux 进程 fork 机制](../../../blog/posts/linux_fork.md#linux-fork)
 
 ## 1. System Server 请求 fork
 

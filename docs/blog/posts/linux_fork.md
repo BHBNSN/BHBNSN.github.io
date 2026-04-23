@@ -1,4 +1,13 @@
+---
+date:
+  created: 2026-03-22
+  updated: 2026-03-22
+---
+
 # Linux 进程 fork 机制
+
+<!-- more -->
+
 !!! note "参考资料"
     [【知乎】linux 进程 fork()](https://zhuanlan.zhihu.com/p/53527981){target="_blank" rel="noopener"}
 

@@ -79,7 +79,7 @@
 - spawn 重启进程在运行开头注入，即加入-f参数，因此这种模式我们常通过包名注入
 
 ### 脚本参数
-```bash hl_lines="1-4 15 17 27"
+```text hl_lines="1-4 15 17 27"
 -h, --help            显示帮助信息并退出
 -D ID, --device ID    连接到指定ID的设备
 -U, --usb             连接到USB设备
@@ -123,7 +123,21 @@
 --auto-reload         启用提供的脚本和C模块的自动重载(默认启用,将来将成为必需)
 --no-auto-reload      禁用提供的脚本和C模块的自动重载
 ```
-### 获取进程信息
+### 进程 Process
+
+frida 是注入到指定进程中的，因此肯定是有且只有一个已知的进程，通过 Process 的 api 可以获取到当前进程的一些信息
+
+### 模块 Module
+
+Module 一般通过
+- Process.enumerateModules() 枚举
+- Process.findModuleByAddress(address)
+- Process.getModuleByAddress(address)
+- Process.findModuleByName(name)
+- Process.getModuleByName(name) 查找模块
+- Module.load() 加载模块
+来获取一个 Module 对象，其中 find 和 get 的区别在于前者找不到会返回 null，而后者找不到会抛出异常。
+
 
 ### 插桩
 
