@@ -2,94 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://blog.n0rth5ea.online/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/friends/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/blog/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/blog/2026/04/29/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E5%BA%8F/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/blog/2026/03/22/linux-%E8%BF%9B%E7%A8%8B-fork-%E6%9C%BA%E5%88%B6/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/android/theory/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/android/aosp/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/android/aosp/app_launch/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/android/aosp/zygote_fork/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/android/aosp/zygote_startup/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/courses/OS/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/courses/OS/Scheduling/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/reverse/assembly/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/reverse/assembly/arm64/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
+    </url>
+    <url>
+         <loc>https://blog.n0rth5ea.online/study/reverse/assembly/x86_64/</loc>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/reverse/tools/JADX/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/reverse/tools/Unicorn-engine/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/reverse/tools/frida/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/reverse/tools/ida_pro/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/wp/2025-10/qwb_2025/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/wp/2025-11/gjs_2025/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/wp/2025-12/ciscn%26ccb_2026/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/study/wp/2026-03/ccsssc_2026/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
     <url>
          <loc>https://blog.n0rth5ea.online/blog/archive/2026/</loc>
-         <lastmod>2026-04-23</lastmod>
+         <lastmod>2026-04-24</lastmod>
     </url>
 </urlset>
