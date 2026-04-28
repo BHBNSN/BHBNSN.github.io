@@ -9,26 +9,28 @@
         <meta name="author" content="N0rth5ea">
       
       
-        <link rel="canonical" href="https://blog.n0rth5ea.online/blog/2026/03/22/linux-%E8%BF%9B%E7%A8%8B-fork-%E6%9C%BA%E5%88%B6/">
+        <link rel="canonical" href="https://blog.n0rth5ea.online/study/reverse/cryptography/rsa/">
       
       
+        <link rel="prev" href="../../tools/Unicorn-engine/">
       
-        <link rel="next" href="../../../04/29/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E5%BA%8F/">
+      
+        <link rel="next" href="../../assembly/">
       
       
-      <link rel="icon" href="../../../../../images/logo.png">
+      <link rel="icon" href="../../../../images/logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>Linux 进程 fork 机制 - N0rth5ea's Capsule</title>
+        <title>RSA - N0rth5ea's Capsule</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -47,34 +49,34 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/fonts/material-icons.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/material.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/shift-away.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/shift-away.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/tippy.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/light.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/core/core.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/core/core.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/user.config.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/user.config.css">
     
-    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -84,7 +86,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
-        </style><script src="../../../../../assets/javascripts/toggle-sidebar.js"></script></head>
+        </style><script src="../../../../assets/javascripts/toggle-sidebar.js"></script></head>
   
   
     
@@ -103,7 +105,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linux-fork" class="md-skip">
+        <a href="#rsa" class="md-skip">
           跳转至
         </a>
       
@@ -117,9 +119,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../../.." title="N0rth5ea's Capsule" class="md-header__button md-logo" aria-label="N0rth5ea's Capsule" data-md-component="logo">
+    <a href="../../../.." title="N0rth5ea's Capsule" class="md-header__button md-logo" aria-label="N0rth5ea's Capsule" data-md-component="logo">
       
-  <img src="../../../../../images/logo.png" alt="logo">
+  <img src="../../../../images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -136,7 +138,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linux 进程 fork 机制
+              RSA
             
           </span>
         </div>
@@ -252,11 +254,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="../../../../" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../../../blog/" class="md-tabs__link">
         
   
   
@@ -275,7 +275,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -292,6 +292,8 @@
   
   
   
+    
+  
   
     
     
@@ -299,6 +301,8 @@
   
   
   
+    
+  
   
     
     
@@ -306,11 +310,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../../../study/reverse/tools/ida_pro/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../tools/ida_pro/" class="md-tabs__link">
           
   
   
@@ -334,7 +340,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../friends/" class="md-tabs__link">
+      <a href="../../../../friends/" class="md-tabs__link">
         
   
   
@@ -358,9 +364,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -373,9 +377,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../.." title="N0rth5ea's Capsule" class="md-nav__button md-logo" aria-label="N0rth5ea's Capsule" data-md-component="logo">
+    <a href="../../../.." title="N0rth5ea's Capsule" class="md-nav__button md-logo" aria-label="N0rth5ea's Capsule" data-md-component="logo">
       
-  <img src="../../../../../images/logo.png" alt="logo">
+  <img src="../../../../images/logo.png" alt="logo">
 
     </a>
     N0rth5ea's Capsule
@@ -399,14 +403,12 @@
       
   
   
-    
-  
   
     
   
   
-    <li class="md-nav__item md-nav__item--active">
-      <a href="../../../../" class="md-nav__link">
+    <li class="md-nav__item">
+      <a href="../../../../blog/" class="md-nav__link">
         
   
   
@@ -428,7 +430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -447,24 +449,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -477,7 +484,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             学习之路
@@ -488,6 +495,8 @@
                 
   
   
+    
+  
   
   
     
@@ -498,11 +507,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked="">
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -518,7 +527,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             逆向基础
@@ -573,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/tools/ida_pro/" class="md-nav__link">
+      <a href="../../tools/ida_pro/" class="md-nav__link">
         
   
   
@@ -596,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/tools/JADX/" class="md-nav__link">
+      <a href="../../tools/JADX/" class="md-nav__link">
         
   
   
@@ -619,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/tools/frida/" class="md-nav__link">
+      <a href="../../tools/frida/" class="md-nav__link">
         
   
   
@@ -642,7 +651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/tools/Unicorn-engine/" class="md-nav__link">
+      <a href="../../tools/Unicorn-engine/" class="md-nav__link">
         
   
   
@@ -670,6 +679,8 @@
                 
   
   
+    
+  
   
   
     
@@ -680,11 +691,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" checked="">
         
           
           <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
@@ -700,7 +711,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1_2">
             <span class="md-nav__icon md-icon"></span>
             密码学基础
@@ -714,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/cryptography/index.md" class="md-nav__link">
+      <a href="../index.md" class="md-nav__link">
         
   
   
@@ -734,10 +745,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../../../study/reverse/cryptography/rsa/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    RSA
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -748,6 +781,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rsa_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA 算法流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rsa_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA 算法原理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rsa_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA 工程实现
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -809,7 +898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/assembly/" class="md-nav__link">
+      <a href="../../assembly/" class="md-nav__link">
         
   
   
@@ -832,7 +921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/assembly/x86_64/" class="md-nav__link">
+      <a href="../../assembly/x86_64/" class="md-nav__link">
         
   
   
@@ -855,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/assembly/arm64/" class="md-nav__link">
+      <a href="../../assembly/arm64/" class="md-nav__link">
         
   
   
@@ -927,7 +1016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/hook/index.md" class="md-nav__link">
+      <a href="../../hook/index.md" class="md-nav__link">
         
   
   
@@ -950,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/reverse/hook/inline_hook.md" class="md-nav__link">
+      <a href="../../hook/inline_hook.md" class="md-nav__link">
         
   
   
@@ -1030,7 +1119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/android/theory/" class="md-nav__link">
+      <a href="../../../android/theory/" class="md-nav__link">
         
   
   
@@ -1094,7 +1183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/android/aosp/" class="md-nav__link">
+      <a href="../../../android/aosp/" class="md-nav__link">
         
   
   
@@ -1117,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/android/aosp/zygote_startup/" class="md-nav__link">
+      <a href="../../../android/aosp/zygote_startup/" class="md-nav__link">
         
   
   
@@ -1140,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/android/aosp/zygote_fork/" class="md-nav__link">
+      <a href="../../../android/aosp/zygote_fork/" class="md-nav__link">
         
   
   
@@ -1163,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/android/aosp/systemserver_launch.md" class="md-nav__link">
+      <a href="../../../android/aosp/systemserver_launch.md" class="md-nav__link">
         
   
   
@@ -1186,7 +1275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/android/aosp/app_launch/" class="md-nav__link">
+      <a href="../../../android/aosp/app_launch/" class="md-nav__link">
         
   
   
@@ -1307,7 +1396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/courses/OS/" class="md-nav__link">
+      <a href="../../../courses/OS/" class="md-nav__link">
         
   
   
@@ -1330,7 +1419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/courses/OS/Scheduling/" class="md-nav__link">
+      <a href="../../../courses/OS/Scheduling/" class="md-nav__link">
         
   
   
@@ -1451,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/wp/2025-10/qwb_2025/" class="md-nav__link">
+      <a href="../../../wp/2025-10/qwb_2025/" class="md-nav__link">
         
   
   
@@ -1523,7 +1612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/wp/2025-11/gjs_2025/" class="md-nav__link">
+      <a href="../../../wp/2025-11/gjs_2025/" class="md-nav__link">
         
   
   
@@ -1595,7 +1684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/wp/2025-12/ciscn%26ccb_2026/" class="md-nav__link">
+      <a href="../../../wp/2025-12/ciscn%26ccb_2026/" class="md-nav__link">
         
   
   
@@ -1667,7 +1756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/wp/2026-03/ccsssc_2026/" class="md-nav__link">
+      <a href="../../../wp/2026-03/ccsssc_2026/" class="md-nav__link">
         
   
   
@@ -1739,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../study/wp/2026-04/tencent_game_p_2026/" class="md-nav__link">
+      <a href="../../../wp/2026-04/tencent_game_p_2026/" class="md-nav__link">
         
   
   
@@ -1785,7 +1874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../friends/" class="md-nav__link">
+      <a href="../../../../friends/" class="md-nav__link">
         
   
   
@@ -1809,106 +1898,116 @@
             
           
           
-  <div class="md-content md-content--post" data-md-component="content">
-    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-        <div class="md-sidebar__inner md-post">
-          <nav class="md-nav md-nav--primary">
-            <div class="md-post__back">
-              <div class="md-nav__title md-nav__container">
-                <a href="../../../../" class="md-nav__link">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
-                  <span class="md-ellipsis">
-                    回到主页
-                  </span>
-                </a>
-              </div>
-            </div>
-            
-            <ul class="md-post__meta md-nav__list">
-              <li class="md-nav__item md-nav__item--section">
-                <div class="md-post__title">
-                  <span class="md-ellipsis">
-                    元数据
-                  </span>
-                </div>
-                <nav class="md-nav">
-                  <ul class="md-nav__list">
-                    <li class="md-nav__item">
-                      <div class="md-nav__link">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"></path></svg>
-                        <time datetime="2026-03-22 00:00:00+00:00" class="md-ellipsis">2026年3月22日</time>
-                      </div>
-                    </li>
-                    
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"></path></svg>
-                          <time datetime="2026-03-22 00:00:00+00:00" class="md-ellipsis">2026年3月22日</time>
-                        </div>
-                      </li>
-                    
-                    
-                    
-                      
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"></path></svg>
-                          <span class="md-ellipsis">
-                            
-                              需要 1 分钟阅读时间
-                            
-                          </span>
-                        </div>
-                      </li>
-                    
-                  </ul>
-                </nav>
-              </li>
-            </ul>
-            
-          </nav>
-          
-            
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-</nav>
-          
-        </div>
-      </div>
-    </div>
-    <article class="md-content__inner md-typeset">
-      
-        
-  
-
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
 
   
   
 
 
-<h1 id="linux-fork">Linux 进程 fork 机制<a class="headerlink" href="#linux-fork" title="Permanent link">¶</a></h1>
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span data-tippy-content="" data-tippy-raw="2026-04-24"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-04-24T00:16:06+08:00">2026-04-24 00:16:06</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
+<h1 id="rsa">RSA<a class="headerlink" href="#rsa" title="Permanent link">¶</a></h1>
+<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-04-28"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-04-28T22:45:02+08:00">2026-04-28 22:45:02</time></span><span data-tippy-content="" data-tippy-raw="2026-04-28"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-04-28T22:45:02+08:00">2026-04-28 22:45:02</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
 
-<!-- more -->
-
-<div class="admonition note">
-<p class="admonition-title">参考资料</p>
-<p><a href="https://zhuanlan.zhihu.com/p/53527981" rel="noopener" target="_blank">【知乎】linux 进程 fork()</a></p>
-</div>
-<p>fork 直译是叉子，形象的描述了进程 fork 后分叉的样子，进程 fork 后会复制自身，形成一个新的进程，具体如下：</p>
+<h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>RSA 是一种非对称加密算法，基于数论中的大数分解问题，计算步骤简单，不考虑量子计算机的情况下，安全性高，是目前最常用的非对称加密算法之一，也是学习非对称加密算法的入门算法。</p>
+<p>所谓大数分解问题，就是有两个大素数，很容易计算它们的乘积，虽然这个乘积只可能来源于唯一一组素数相乘（不考虑1和本身那组），但如果只知道乘积，要想分解出这两个素数是非常困难的。
+而 rsa 的公钥就是由这两个大素数的乘积和一个指数构成的，私钥则是由这两个大素数和另一个指数构成的，所以 RSA 的安全性通常与大整数分解问题密切相关。</p>
+<h2 id="rsa_1">RSA 算法流程<a class="headerlink" href="#rsa_1" title="Permanent link">¶</a></h2>
 <ol>
-<li>父进程调用 fork() 系统调用。</li>
-<li>内核为新进程分配一个新的进程描述符。</li>
-<li>内核会复制父进程的内存，相当于父子进程有着完全一样的虚拟内存，一样的代码逻辑，一样的文件描述符等资源，内核会为子进程分配新的物理内存空间。</li>
-<li>fork() 会为父子进程返回不同的 pid 值，父进程返回子进程的 pid，子进程返回 0，如果返回负数则表明fork失败，程序根据这个返回值判断自己是父进程还是子进程然后进入不同代码逻辑。</li>
+<li>
+<p>密钥生成</p>
+<div class="arithmatex">\[
+\begin{aligned}
+n &amp;= p \cdot q \\
+\phi(n) &amp;= (p - 1)(q - 1) \\
+e &amp;\in [1, \phi(n)), \quad \gcd(e, \phi(n)) = 1 \\
+d &amp;\equiv e^{-1} \pmod{\phi(n)}
+\end{aligned}
+\]</div>
+<p>其中 e 常用 65537</p>
+</li>
+<li>
+<p>加密</p>
+<div class="arithmatex">\[
+c \equiv m^e \mod n
+\]</div>
+</li>
+<li>
+<p>解密</p>
+<div class="arithmatex">\[
+m \equiv c^d \mod n
+\]</div>
+</li>
+</ol>
+<h2 id="rsa_2">RSA 算法原理<a class="headerlink" href="#rsa_2" title="Permanent link">¶</a></h2>
+<p>这里我不想写太多专业数学定理和证明，最简单的理解就是</p>
+<blockquote>
+<p>e 和 d 是一对"互相抵消"的指数——做 e 次方再做 d 次方，等于什么都没做，数字回到了原点。</p>
+</blockquote>
+<p>而为什么 e 和 d 能互相抵消呢？这来源于欧拉定理：</p>
+<div class="arithmatex">\[
+a^{\phi(n)} \equiv 1 \pmod{n}
+\]</div>
+<p>其中 a 是与 n 互质的整数，<span class="arithmatex">\(\phi(n)\)</span> 是欧拉函数，表示小于 n 且与 n 互质的正整数的个数。
+根据欧拉定理，我们可以推导出：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+m^{e \cdot d} &amp;\equiv m^{k \cdot \phi(n) + 1} \pmod{n} \\
+&amp;\equiv m^{k \cdot \phi(n)} \cdot m^1 \pmod{n} \\
+&amp;\equiv 1^k \cdot m \pmod{n} \\
+&amp;\equiv m \pmod{n}
+\end{aligned}
+\]</div>
+<p>因此，e 和 d 互相抵消，使得加密和解密过程能够正确地恢复原文。</p>
+<div class="admonition note">
+<p class="admonition-title">补充说明</p>
+<p>严格来说，欧拉定理直接适用于 m 与 n 互质的情况；对于 m 与 n 不互质的情况，可以通过分别在模 p、模 q 下讨论并结合中国剩余定理证明，实际 RSA 解密仍然成立。</p>
+</div>
+<p>至于欧拉定理的证明和为什么密钥生成、加解密算法为什么是这样的，就不再展开。</p>
+<h2 id="rsa_3">RSA 工程实现<a class="headerlink" href="#rsa_3" title="Permanent link">¶</a></h2>
+<p>单纯的上述 RSA 流程还存在下面三个安全问题：
+1. 确定性加密，直接导致暴力枚举
+RSA 没有内置随机性，相同的 m 和公钥永远产生相同的 c 。如果明文空间很小，比如加密的是“是/否”、“同意/拒绝”，攻击者可以直接把所有可能的明文用公钥加密一遍，跟截获的密文比对破解。</p>
+<ol>
+<li>
+<p>数学同态性导致密文可篡改
+RSA 的加密算法具有数学同态性，简单来说就是把两个密文相乘，解密后得到的就是两条明文的乘积，因此攻击者可以在不知道明文的情况下，对密文进行数学变形，使解密结果变成原明文的可控倍数。</p>
+</li>
+<li>
+<p>协议层面可发起选择密文攻击（CCA）
+在真实系统中，服务端往往会对解密结果做某种处理并返回响应（哪怕只是报错信息），攻击者利用上述同态性可以构造大量变形密文让服务端解密，从响应差异中逐步恢复明文。</p>
+</li>
+</ol>
+<p>因此，实际工程中 RSA 需要通过填充来防止上述攻击，常见的有 PKCS#1 v1.5 和 OAEP</p>
+<ol>
+<li>
+<p>PKCS#1 v1.5</p>
+<p>在明文前面添加填充字符串，格式如下：</p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>00 || BT || PS || 00 || Data
+</span></code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li>00（1字节）：固定前导零，保证填充后的整数小于模数 n。</li>
+<li>BT（1字节）：块类型。<ul>
+<li>02 用于加密（公钥操作），表示随机填充。</li>
+<li>01 用于签名（私钥操作），表示全 FF 填充。</li>
+</ul>
+</li>
+<li>PS（至少8字节）：<ul>
+<li>加密时（BT=02）：随机非零字节，每次加密都不一样。</li>
+<li>签名时（BT=01）：全部填入 FF。</li>
+</ul>
+</li>
+<li>00（1字节）：分隔符，标记填充结束。</li>
+<li>Data：真正的消息。</li>
+</ul>
+<p>这样填充后不仅避免了确定性加密，对于同态攻击，也会因为填充而导致相乘后格式不合法而被拒绝。
+但是 PKCS#1 v1.5 存在一些已知漏洞，比如 Bleichenbacher 攻击，攻击者可以通过构造大量变形密文来判断解密结果是否符合 PKCS#1 v1.5 的格式，从而逐步恢复明文。
+2. OAEP（Optimal Asymmetric Encryption Padding）</p>
+<p>OAEP 全称最优非对称加密填充，为了消除上述所有攻击而设计，它的详细步骤比较复杂，主要思想是通过引入随机性和双重掩码来确保每次加密结果都不同，并且无法通过同态性质构造有效的变形密文。</p>
+</li>
 </ol>
 
 
@@ -1923,14 +2022,12 @@
 
 
 
-  
 
 
-
-      
-    </article>
-  </div>
-
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -1947,19 +2044,33 @@
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="页脚">
+        
+          
+          <a href="../../tools/Unicorn-engine/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Unicorn">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Unicorn
+              </div>
+            </div>
+          </a>
         
         
           
-          <a href="../../../04/29/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E5%BA%8F/" class="md-footer__link md-footer__link--next" aria-label="下一页: 大小端序">
+          <a href="../../assembly/" class="md-footer__link md-footer__link--next" aria-label="下一页: 概述">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                大小端序
+                概述
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2001,30 +2112,30 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["content.code.annotate", "content.code.copy", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "toc.integrate", "header.autohide"], "search": "../../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.copy", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "toc.integrate", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.js"></script>
       
-        <script src="../../../../../assets/javascripts/pangu-init.js"></script>
+        <script src="../../../../assets/javascripts/pangu-init.js"></script>
       
-        <script src="../../../../../assets/javascripts/mathjax.js"></script>
+        <script src="../../../../assets/javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../../../../assets/document_dates/tippy/popper.min.js"></script>
+        <script src="../../../../assets/document_dates/tippy/popper.min.js"></script>
       
-        <script src="../../../../../assets/document_dates/tippy/tippy.umd.min.js"></script>
+        <script src="../../../../assets/document_dates/tippy/tippy.umd.min.js"></script>
       
-        <script src="../../../../../assets/document_dates/core/default.config.js"></script>
+        <script src="../../../../assets/document_dates/core/default.config.js"></script>
       
-        <script src="../../../../../assets/document_dates/user.config.js"></script>
+        <script src="../../../../assets/document_dates/user.config.js"></script>
       
-        <script src="../../../../../assets/document_dates/core/utils.js"></script>
+        <script src="../../../../assets/document_dates/core/utils.js"></script>
       
-        <script src="../../../../../assets/document_dates/core/core.js"></script>
+        <script src="../../../../assets/document_dates/core/core.js"></script>
       
     
   
