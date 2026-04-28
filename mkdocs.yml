@@ -155,6 +155,7 @@ nav:
               - Zygote 启动流程: study/android/aosp/zygote_startup.md
               - Zygote 孵化流程: study/android/aosp/zygote_fork.md
               - System Server 启动: study/android/aosp/systemserver_launch.md
+              - 应用启动流程: study/android/aosp/app_launch.md
       - 课程:
           - 操作系统:
               - 概述: study/courses/OS/index.md
