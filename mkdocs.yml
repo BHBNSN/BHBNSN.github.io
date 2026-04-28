@@ -96,6 +96,8 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
 
 # 插件配置
 plugins:
@@ -121,6 +123,8 @@ plugins:
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.js
   - assets/javascripts/pangu-init.js
+  - assets/javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 extra_css:
   - assets/stylesheets/extra.css
 # 导航栏配置
@@ -134,6 +138,9 @@ nav:
               - JADX: study/reverse/tools/JADX.md
               - Frida: study/reverse/tools/frida.md
               - Unicorn: study/reverse/tools/Unicorn-engine.md
+          - 密码学基础:
+              - 概述: study/reverse/cryptography/index.md
+              - RSA: study/reverse/cryptography/rsa.md
           - 汇编基础:
               - 概述: study/reverse/assembly/index.md
               - x86-64: study/reverse/assembly/x86_64.md
@@ -147,6 +154,7 @@ nav:
               - 介绍: study/android/aosp/index.md
               - Zygote 启动流程: study/android/aosp/zygote_startup.md
               - Zygote 孵化流程: study/android/aosp/zygote_fork.md
+              - System Server 启动: study/android/aosp/systemserver_launch.md
       - 课程:
           - 操作系统:
               - 概述: study/courses/OS/index.md

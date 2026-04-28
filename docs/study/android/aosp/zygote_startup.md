@@ -59,33 +59,8 @@ app_process 对应的源码是 app_main.cpp
 
 可以看出，在`--zygote --start-system-server`参数下，最终会启动Java层的 `com.android.internal.os.ZygoteInit` 类，并将`start-system-server`放在arg中传入。
 
-## 3. ZygoteInit 启动流程
-ZygoteInit.java 在 /frameworks/base/core/java/com/android/internal/os/
-
-ZygoteInit 的主要流程是预加载资源，如果参数里有 `--start-system-server` 则孵化 SystemServer，最后进入循环等待 AMS 的创建请求。
-
-```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java"
-// 检查参数 line 848:860
---8<-- "docs/study/android/source/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java:848:860"
-// 预加载资源供后续孵化用 line 879:889
---8<-- "docs/study/android/source/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java:879:889"
-// 循环等待创建请求 line 917:919
---8<-- "docs/study/android/source/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java:917:919"
-```
-
-main 启动中会判断了传入参数有没有 `--start-system-server`，如果有则会孵化 SystemServer 进程。
-
-```java title="/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java"
-// line 817
---8<-- "docs/study/android/source/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java:817:817"
-// 检查 argv 里是否存在 `--start-system-server` 设置 startSystemServer 标志 line 848:850
---8<-- "docs/study/android/source/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java:848:850"
-// 孵化 SystemServer line 902:913
---8<-- "docs/study/android/source/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java:902:913"
-```
-
-## 4. 结语
-至此，我们已经了解了 Zygote 进程的启动流程，从 init 启动 app_process，再到 app_process 启动 ZygoteInit，最后 ZygoteInit 进入循环等待创建请求的阶段。下一步就将探索 Zygote 如何孵化 SystemServer 和处理来自 AMS 的请求并孵化新的应用进程。
+## 3. 结语
+至此，我们已经了解了 Zygote 进程的启动流程，从 init 启动 app_process，再到 app_process 启动 ZygoteInit
 
 !!! quote "参考资料"
     - [Java 世界的盘古和女娲 —— Zygote](https://juejin.cn/post/6844903955177144333){target="_blank" rel="noopener"}
