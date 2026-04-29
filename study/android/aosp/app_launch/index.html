@@ -1247,9 +1247,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-app" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 为什么你能点开一个 App？
+      1. 桌面应用的启动
     </span>
   </a>
   
@@ -1882,11 +1882,12 @@
 
 
 <h1 id="_1">应用启动流程<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-03-18"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-03-18T21:51:25.819551+08:00">2026-03-18 21:51:25</time></span><span data-tippy-content="" data-tippy-raw="2026-03-23"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-03-23T12:40:55+08:00">2026-03-23 12:40:55</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
-<h2 id="1-app">1. 为什么你能点开一个 App？<a class="headerlink" href="#1-app" title="Permanent link">¶</a></h2>
-<p>我们每天看到的桌面实际上也是一个 App，叫做 Launcher（启动器），位于 <code>/packages/apps/Launcher3/</code>。
-图标点击事件由 BubbleTextView 或 ShortcutAndWidgetContainer 传递到 Launcher，再走 startActivitySafely() → AMS。
-</p><div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Launcher3 启动 App 代码</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-03-18"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-03-18T21:51:25.819551+08:00">2026-03-18 21:51:25</time></span><span data-tippy-content="" data-tippy-raw="2026-04-30"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-04-30T00:28:25+08:00">2026-04-30 00:28:25</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
+
+<h2 id="1">1. 桌面应用的启动<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
+<p>我们每天看到的桌面实际上也是一个 App，aosp 中默认为 Launcher3，位于 <code>/packages/apps/Launcher3/</code>。</p>
+<p>在 <code>SystemServer.run</code> 的 <code>startOtherServices</code> 中会进入 <code>ActivityManagerService.systemReady</code> 从而调用 <code>mAtmInternal.startHomeOnAllDisplays(currentUserId, "systemReady");</code></p>
+<div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/java/com/android/server/SystemServer.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
@@ -1901,59 +1902,115 @@
 <span class="normal"><a href="#__codelineno-0-13">13</a></span>
 <span class="normal"><a href="#__codelineno-0-14">14</a></span>
 <span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span>
-<span class="normal"><a href="#__codelineno-0-24">24</a></span>
-<span class="normal"><a href="#__codelineno-0-25">25</a></span>
-<span class="normal"><a href="#__codelineno-0-26">26</a></span>
-<span class="normal"><a href="#__codelineno-0-27">27</a></span>
-<span class="normal"><a href="#__codelineno-0-28">28</a></span>
-<span class="normal"><a href="#__codelineno-0-29">29</a></span>
-<span class="normal"><a href="#__codelineno-0-30">30</a></span>
-<span class="normal"><a href="#__codelineno-0-31">31</a></span>
-<span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nd">@Override</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">RunnableList</span><span class="w"> </span><span class="nf">startActivitySafely</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">ItemInfo</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">hasBeenResumed</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="n">RunnableList</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RunnableList</span><span class="p">();</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="c1">// Workaround an issue where the WM launch animation is clobbered when finishing the</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="c1">// recents animation into launcher. Defer launching the activity until Launcher is</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="c1">// next resumed.</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">        </span><span class="n">addEventCallback</span><span class="p">(</span><span class="n">EVENT_RESUMED</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">            </span><span class="n">RunnableList</span><span class="w"> </span><span class="n">actualResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startActivitySafely</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">);</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">actualResult</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">                </span><span class="n">actualResult</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">result</span><span class="p">::</span><span class="n">executeAllAndDestroy</span><span class="p">);</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">                </span><span class="n">result</span><span class="p">.</span><span class="na">executeAllAndDestroy</span><span class="p">();</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">            </span><span class="p">}</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">        </span><span class="p">});</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mOnDeferredActivityLaunchCallback</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">            </span><span class="n">mOnDeferredActivityLaunchCallback</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">            </span><span class="n">mOnDeferredActivityLaunchCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="n">RunnableList</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">startActivitySafely</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">);</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">BubbleTextView</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">        </span><span class="c1">// This is set to the view that launched the activity that navigated the user away</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">        </span><span class="c1">// from launcher. Since there is no callback for when the activity has finished</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">        </span><span class="c1">// launching, enable the press state and keep this reference to reset the press</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">        </span><span class="c1">// state when we return to launcher.</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">        </span><span class="n">BubbleTextView</span><span class="w"> </span><span class="n">btv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BubbleTextView</span><span class="p">)</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">        </span><span class="n">btv</span><span class="p">.</span><span class="na">setStayPressed</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">        </span><span class="n">result</span><span class="p">.</span><span class="na">add</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">btv</span><span class="p">.</span><span class="na">setStayPressed</span><span class="p">(</span><span class="kc">false</span><span class="p">));</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// line 796-797</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">        </span><span class="n">TimingsTraceAndSlog</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TimingsTraceAndSlog</span><span class="p">();</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">//...</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1">// line 984-994 调用 startOtherServices 方法</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">            </span><span class="n">t</span><span class="p">.</span><span class="na">traceBegin</span><span class="p">(</span><span class="s">"StartServices"</span><span class="p">);</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="n">startBootstrapServices</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">            </span><span class="n">startCoreServices</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="hll"><span class="w">            </span><span class="n">startOtherServices</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span></span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">            </span><span class="n">startApexServices</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">            </span><span class="c1">// Only update the timeout after starting all the services so that we use</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">            </span><span class="c1">// the default timeout to start system server.</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">            </span><span class="n">updateWatchdogTimeout</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">            </span><span class="n">CriticalEventLog</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">logSystemServerStarted</span><span class="p">();</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Throwable</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/java/com/android/server/SystemServer.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">// line 1513-1518</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="cm">     * Starts a miscellaneous grab bag of stuff that has yet to be refactored and organized.</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="cm">     */</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startOtherServices</span><span class="p">(</span><span class="nd">@NonNull</span><span class="w"> </span><span class="n">TimingsTraceAndSlog</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="n">t</span><span class="p">.</span><span class="na">traceBegin</span><span class="p">(</span><span class="s">"startOtherServices"</span><span class="p">);</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">        </span><span class="n">mSystemServiceManager</span><span class="p">.</span><span class="na">updateOtherServicesStartIndex</span><span class="p">();</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="c1">//...</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="c1">// line 3217-3223 调用 mActivityManagerService.systemReady</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span><span class="c1">// We now tell the activity manager it is okay to run third party</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span><span class="c1">// code.  It will call back into us once it has gotten to the state</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span><span class="c1">// where third party code can really run (but before it has actually</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">        </span><span class="c1">// started launching the initial applications), for us to complete our</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">        </span><span class="c1">// initialization.</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="hll"><span class="w">        </span><span class="n">mActivityManagerService</span><span class="p">.</span><span class="na">systemReady</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+</span></span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">            </span><span class="n">Slog</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">"Making services ready"</span><span class="p">);</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">// line 8970-8975</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="cm">     * Ready. Set. Go!</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="cm">     */</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">systemReady</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">Runnable</span><span class="w"> </span><span class="n">goingCallback</span><span class="p">,</span><span class="w"> </span><span class="nd">@NonNull</span><span class="w"> </span><span class="n">TimingsTraceAndSlog</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">        </span><span class="n">t</span><span class="p">.</span><span class="na">traceBegin</span><span class="p">(</span><span class="s">"PhaseActivityManagerReady"</span><span class="p">);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="n">mSystemServiceManager</span><span class="p">.</span><span class="na">preSystemReady</span><span class="p">();</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">//...</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1">// line 9129-9139 调用 mAtmInternal.startHomeOnAllDisplays</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">            </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isBootingSystemUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentUserId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UserHandle</span><span class="p">.</span><span class="na">USER_SYSTEM</span><span class="p">;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">            </span><span class="c1">// Some systems - like automotive - will explicitly unlock system user then switch</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">            </span><span class="c1">// to a secondary user.</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">            </span><span class="c1">// TODO(b/266158156): this workaround shouldn't be necessary once we move</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">            </span><span class="c1">// the headless-user start logic to UserManager-land.</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isBootingSystemUser</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">UserManager</span><span class="p">.</span><span class="na">isHeadlessSystemUserMode</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">                </span><span class="n">t</span><span class="p">.</span><span class="na">traceBegin</span><span class="p">(</span><span class="s">"startHomeOnAllDisplays"</span><span class="p">);</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="hll"><span class="w">                </span><span class="n">mAtmInternal</span><span class="p">.</span><span class="na">startHomeOnAllDisplays</span><span class="p">(</span><span class="n">currentUserId</span><span class="p">,</span><span class="w"> </span><span class="s">"systemReady"</span><span class="p">);</span>
+</span></span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">                </span><span class="n">t</span><span class="p">.</span><span class="na">traceEnd</span><span class="p">();</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">            </span><span class="p">}</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>这里调用的是 <code>ActivityTaskManagerInternal</code>。它是系统进程内部使用的抽象接口，真正的实现是 <code>ActivityTaskManagerService</code> 内部的 <code>LocalService</code>。AMS 通过 <code>LocalServices.getService(ActivityTaskManagerInternal.class)</code> 拿到这个内部服务，因此这里最终会进入 <code>ActivityTaskManagerService.LocalService.startHomeOnAllDisplays()</code>。
+</p><div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/core/java/com/android/server/wm/ActivityTaskManagerService.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span>
+<span class="normal"><a href="#__codelineno-3-8">8</a></span>
+<span class="normal"><a href="#__codelineno-3-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">// line 6038</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LocalService</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ActivityTaskManagerInternal</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">// line 6636-6641</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="nd">@Override</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">startHomeOnAllDisplays</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reason</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">            </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="n">mGlobalLock</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="hll"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">mRootWindowContainer</span><span class="p">.</span><span class="na">startHomeOnAllDisplays</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p">);</span>
+</span></span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">        </span><span class="p">}</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
+<p>在这里进入了 <code>RootWindowContainer</code> 的 <code>startHomeOnAllDisplays</code></p>
 
 
 
