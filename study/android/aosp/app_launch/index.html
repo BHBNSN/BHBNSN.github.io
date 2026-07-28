@@ -55,15 +55,15 @@
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/shift-away.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/tippy.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
-    
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/tippy.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/core/core.css">
     
@@ -1255,6 +1255,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 从点击到应用启动
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1882,7 +1891,7 @@
 
 
 <h1 id="_1">应用启动流程<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
-<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-03-18"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-03-18T21:51:25.819551+08:00">2026-03-18 21:51:25</time></span><span data-tippy-content="" data-tippy-raw="2026-04-30"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-04-30T00:28:25+08:00">2026-04-30 00:28:25</time></span><span class="material-icons" data-icon="doc_author"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/BHBNSN" data-desc-position="bottom"><img class="avatar" src="https://avatars.githubusercontent.com/BHBNSN"></a></div></div></div></div>
+<div class="document-dates-plugin-wrapper document-dates-top"><div class="document-dates-plugin" locale=""><span data-tippy-content="" data-tippy-raw="2026-03-18"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-03-18T21:51:25.819551+08:00">2026-03-18 21:51:25</time></span><span data-tippy-content="" data-tippy-raw="2026-07-28"><span class="material-icons" data-icon="doc_modified"></span><time datetime="2026-07-28T16:06:00+08:00">2026-07-28 16:06:00</time></span><span class="material-icons" data-icon="doc_authors"></span><div class="avatar-group"><div class="avatar-wrapper" data-name="BHBNSN" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:2773718257@qq.com&quot;&gt;BHBNSN&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="" data-desc-position="bottom"><img class="avatar" src=""></a></div><div class="avatar-wrapper" data-name="norseaqiu" data-tippy-content="" data-tippy-raw="&lt;a href=&quot;mailto:norseaqiu@tencent.com&quot;&gt;norseaqiu&lt;/a&gt;"><span class="avatar-text"></span><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="" data-desc-position="bottom"><img class="avatar" src=""></a></div></div></div></div>
 
 <h2 id="1">1. 桌面应用的启动<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
 <p>我们每天看到的桌面实际上也是一个 App，aosp 中默认为 Launcher3，位于 <code>/packages/apps/Launcher3/</code>。</p>
@@ -2011,6 +2020,350 @@
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">        </span><span class="p">}</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p>在这里进入了 <code>RootWindowContainer</code> 的 <code>startHomeOnAllDisplays</code></p>
+<p>我们先只看主屏幕的链路：</p>
+<div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/core/java/com/android/server/wm/RootWindowContainer.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">// line 1296-1303</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">startHomeOnAllDisplays</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reason</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">homeStarted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getChildCount</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">            </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">displayId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getChildAt</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">mDisplayId</span><span class="p">;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="hll"><span class="w">            </span><span class="n">homeStarted</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">startHomeOnDisplay</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="n">displayId</span><span class="p">);</span>
+</span></span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">homeStarted</span><span class="p">;</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="c1">// line 1315-1321</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">startHomeOnDisplay</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">displayId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="hll"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">startHomeOnDisplay</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="n">displayId</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="cm">/* allowInstrumenting */</span><span class="p">,</span>
+</span></span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">                </span><span class="kc">false</span><span class="w"> </span><span class="cm">/* fromHomeKey */</span><span class="p">);</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">startHomeOnDisplay</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">displayId</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">allowInstrumenting</span><span class="p">,</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">            </span><span class="kt">boolean</span><span class="w"> </span><span class="n">fromHomeKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="c1">// line 1328-1333</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">DisplayContent</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getDisplayContentOrCreate</span><span class="p">(</span><span class="n">displayId</span><span class="p">);</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">display</span><span class="p">.</span><span class="na">reduceOnAllTaskDisplayAreas</span><span class="p">((</span><span class="n">taskDisplayArea</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="hll"><span class="w">                        </span><span class="n">result</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">startHomeOnTaskDisplayArea</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="n">taskDisplayArea</span><span class="p">,</span>
+</span></span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">                                </span><span class="n">allowInstrumenting</span><span class="p">,</span><span class="w"> </span><span class="n">fromHomeKey</span><span class="p">),</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">                </span><span class="kc">false</span><span class="w"> </span><span class="cm">/* initValue */</span><span class="p">);</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="c1">// line 1346-1347</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">startHomeOnTaskDisplayArea</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="n">TaskDisplayArea</span><span class="w"> </span><span class="n">taskDisplayArea</span><span class="p">,</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="w">            </span><span class="kt">boolean</span><span class="w"> </span><span class="n">allowInstrumenting</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">fromHomeKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="c1">// line 1402-1403</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="hll"><span class="w">        </span><span class="n">mService</span><span class="p">.</span><span class="na">getActivityStartController</span><span class="p">().</span><span class="na">startHomeActivity</span><span class="p">(</span><span class="n">homeIntent</span><span class="p">,</span><span class="w"> </span><span class="n">aInfo</span><span class="p">,</span><span class="w"> </span><span class="n">myReason</span><span class="p">,</span>
+</span></span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30"></a><span class="w">                </span><span class="n">taskDisplayArea</span><span class="p">);</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<p><code>ActivityStartController.startHomeActivity()</code> 的参数 <code>homeIntent</code> 是由 <code>ActivityTaskManagerService</code> 构造，再经过 PackageManager 解析后补充成显式 Intent。</p>
+<p>在 <code>startHomeOnTaskDisplayArea</code> 会先调用 <code>getHomeIntent()</code> 拿到一个 <code>homeIntent</code> 再传入 <code>resolveHomeActivity()</code> 拿到 <code>aInfo</code>：</p>
+<div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/core/java/com/android/server/wm/RootWindowContainer.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">// line 1346-1347</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">startHomeOnTaskDisplayArea</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="n">TaskDisplayArea</span><span class="w"> </span><span class="n">taskDisplayArea</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">            </span><span class="kt">boolean</span><span class="w"> </span><span class="n">allowInstrumenting</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">fromHomeKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1">// line 1363-1370</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">        </span><span class="n">Intent</span><span class="w"> </span><span class="n">homeIntent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">        </span><span class="n">ActivityInfo</span><span class="w"> </span><span class="n">aInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">taskDisplayArea</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">getDefaultTaskDisplayArea</span><span class="p">()</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">                </span><span class="o">||</span><span class="w"> </span><span class="n">mWmService</span><span class="p">.</span><span class="na">shouldPlacePrimaryHomeOnDisplay</span><span class="p">(</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">                        </span><span class="n">taskDisplayArea</span><span class="p">.</span><span class="na">getDisplayId</span><span class="p">(),</span><span class="w"> </span><span class="n">userId</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="hll"><span class="w">            </span><span class="n">homeIntent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mService</span><span class="p">.</span><span class="na">getHomeIntent</span><span class="p">();</span>
+</span></span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="hll"><span class="w">            </span><span class="n">aInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resolveHomeActivity</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">homeIntent</span><span class="p">);</span>
+</span></span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shouldPlaceSecondaryHomeOnDisplayArea</span><span class="p">(</span><span class="n">taskDisplayArea</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>首先来看 <code>getHomeIntent()</code> ：</p>
+<div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/core/java/com/android/server/wm/ActivityTaskManagerService.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">// line 564-567</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="cm">/** Used to control how we initialize the service. */</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="n">ComponentName</span><span class="w"> </span><span class="n">mTopComponent</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="hll"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">mTopAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intent</span><span class="p">.</span><span class="na">ACTION_MAIN</span><span class="p">;</span>
+</span></span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">mTopData</span><span class="p">;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="c1">// line 5609-5617</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="n">Intent</span><span class="w"> </span><span class="nf">getHomeIntent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="hll"><span class="w">        </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="n">mTopAction</span><span class="p">,</span><span class="w"> </span><span class="n">mTopData</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">Uri</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">mTopData</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+</span></span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">        </span><span class="n">intent</span><span class="p">.</span><span class="na">setComponent</span><span class="p">(</span><span class="n">mTopComponent</span><span class="p">);</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">        </span><span class="n">intent</span><span class="p">.</span><span class="na">addFlags</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">FLAG_DEBUG_TRIAGED_MISSING</span><span class="p">);</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mFactoryTest</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">FactoryTest</span><span class="p">.</span><span class="na">FACTORY_TEST_LOW_LEVEL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">            </span><span class="n">intent</span><span class="p">.</span><span class="na">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">CATEGORY_HOME</span><span class="p">);</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">intent</span><span class="p">;</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>构建了一个带有 Home 匹配条件的<strong>隐式 Intent</strong>：</p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>Intent {
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>    action    = android.intent.action.MAIN
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>    category  = android.intent.category.HOME
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>    component = null
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>}
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>然后来看 <code>resolveHomeActivity()</code>：</p>
+<div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/core/java/com/android/server/wm/RootWindowContainer.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span>
+<span class="normal"><a href="#__codelineno-8-32">32</a></span>
+<span class="normal"><a href="#__codelineno-8-33">33</a></span>
+<span class="normal"><a href="#__codelineno-8-34">34</a></span>
+<span class="normal"><a href="#__codelineno-8-35">35</a></span>
+<span class="normal"><a href="#__codelineno-8-36">36</a></span>
+<span class="normal"><a href="#__codelineno-8-37">37</a></span>
+<span class="normal"><a href="#__codelineno-8-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1">// line 1413-1443</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">    </span><span class="n">ActivityInfo</span><span class="w"> </span><span class="nf">resolveHomeActivity</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="n">homeIntent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ActivityManagerService</span><span class="p">.</span><span class="na">STOCK_PM_FLAGS</span><span class="p">;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="hll"><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">ComponentName</span><span class="w"> </span><span class="n">comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homeIntent</span><span class="p">.</span><span class="na">getComponent</span><span class="p">();</span>
+</span></span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">        </span><span class="n">ActivityInfo</span><span class="w"> </span><span class="n">aInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">comp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">                </span><span class="c1">// Factory test.</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">                </span><span class="n">aInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AppGlobals</span><span class="p">.</span><span class="na">getPackageManager</span><span class="p">().</span><span class="na">getActivityInfo</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">                </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">resolvedType</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">                        </span><span class="n">homeIntent</span><span class="p">.</span><span class="na">resolveTypeIfNeeded</span><span class="p">(</span><span class="n">mService</span><span class="p">.</span><span class="na">mContext</span><span class="p">.</span><span class="na">getContentResolver</span><span class="p">());</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="hll"><span class="w">                </span><span class="kd">final</span><span class="w"> </span><span class="n">ResolveInfo</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mTaskSupervisor</span><span class="p">.</span><span class="na">resolveIntent</span><span class="p">(</span><span class="n">homeIntent</span><span class="p">,</span><span class="w"> </span><span class="n">resolvedType</span><span class="p">,</span>
+</span></span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="w">                        </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="n">Binder</span><span class="p">.</span><span class="na">getCallingUid</span><span class="p">(),</span><span class="w"> </span><span class="n">Binder</span><span class="p">.</span><span class="na">getCallingPid</span><span class="p">());</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="hll"><span class="w">                    </span><span class="n">aInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="na">activityInfo</span><span class="p">;</span>
+</span></span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">RemoteException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="w">            </span><span class="c1">// ignore</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22"></a>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aInfo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24"></a><span class="w">            </span><span class="n">Slogf</span><span class="p">.</span><span class="na">wtf</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Exception</span><span class="p">(),</span><span class="w"> </span><span class="s">"No home screen found for %s and user %d"</span><span class="p">,</span><span class="w"> </span><span class="n">homeIntent</span><span class="p">,</span>
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25"></a><span class="w">                    </span><span class="n">userId</span><span class="p">);</span>
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28"></a>
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29"></a><span class="hll"><span class="w">        </span><span class="n">aInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ActivityInfo</span><span class="p">(</span><span class="n">aInfo</span><span class="p">);</span>
+</span></span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30"></a><span class="hll"><span class="w">        </span><span class="n">aInfo</span><span class="p">.</span><span class="na">applicationInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mService</span><span class="p">.</span><span class="na">getAppInfoForUser</span><span class="p">(</span><span class="n">aInfo</span><span class="p">.</span><span class="na">applicationInfo</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
+</span></span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31"></a><span class="hll"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">aInfo</span><span class="p">;</span>
+</span></span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33"></a>
+</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34"></a>
+</span><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35"></a><span class="w">        </span><span class="n">aInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ActivityInfo</span><span class="p">(</span><span class="n">aInfo</span><span class="p">);</span>
+</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36"></a><span class="w">        </span><span class="n">aInfo</span><span class="p">.</span><span class="na">applicationInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mService</span><span class="p">.</span><span class="na">getAppInfoForUser</span><span class="p">(</span><span class="n">aInfo</span><span class="p">.</span><span class="na">applicationInfo</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
+</span><span id="__span-8-37"><a id="__codelineno-8-37" name="__codelineno-8-37"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">aInfo</span><span class="p">;</span>
+</span><span id="__span-8-38"><a id="__codelineno-8-38" name="__codelineno-8-38"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>前面 <code>getHomeIntent()</code> 没有指定 Component，所以会进入隐式 Intent 的解析分支 <code>resolveIntent()</code>，这是一个通用的 Activity Intent 解析入口。它根据 Intent 中的 action、category、data、MIME type、package、component 等约束，在指定用户下找出候选 Activity，并最终返回一个“最佳匹配”的 <code>ResolveInfo</code>，具体细节就不在此深入了。</p>
+<p>aosp 中默认桌面是 Launcher3，那么解析结果应该对应为 <code>aInfo.applicationInfo.packageName = com.android.launcher3</code> <code>aInfo.name = com.android.launcher3.Launcher</code></p>
+<p>在正式调用 <code>startHomeActivity()</code> 之前，<code>startHomeOnTaskDisplayArea()</code> 会把解析到的 Launcher 组件写回同一个 Intent：</p>
+<div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/core/java/com/android/server/wm/RootWindowContainer.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1">// line 1346-1347</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">startHomeOnTaskDisplayArea</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="n">TaskDisplayArea</span><span class="w"> </span><span class="n">taskDisplayArea</span><span class="p">,</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">            </span><span class="kt">boolean</span><span class="w"> </span><span class="n">allowInstrumenting</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">fromHomeKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c1">// line 1389-1403</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">        </span><span class="c1">// Updates the home component of the intent.</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="hll"><span class="w">        </span><span class="n">homeIntent</span><span class="p">.</span><span class="na">setComponent</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ComponentName</span><span class="p">(</span><span class="n">aInfo</span><span class="p">.</span><span class="na">applicationInfo</span><span class="p">.</span><span class="na">packageName</span><span class="p">,</span><span class="w"> </span><span class="n">aInfo</span><span class="p">.</span><span class="na">name</span><span class="p">));</span>
+</span></span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">        </span><span class="n">homeIntent</span><span class="p">.</span><span class="na">setFlags</span><span class="p">(</span><span class="n">homeIntent</span><span class="p">.</span><span class="na">getFlags</span><span class="p">()</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FLAG_ACTIVITY_NEW_TASK</span><span class="p">);</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">        </span><span class="c1">// Updates the extra information of the intent.</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fromHomeKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">            </span><span class="n">homeIntent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">WindowManagerPolicy</span><span class="p">.</span><span class="na">EXTRA_FROM_HOME_KEY</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">        </span><span class="n">homeIntent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">WindowManagerPolicy</span><span class="p">.</span><span class="na">EXTRA_START_REASON</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p">);</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">        </span><span class="c1">// Update the reason for ANR debugging to verify if the user activity is the one that</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="w">        </span><span class="c1">// actually launched.</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">myReason</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reason</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">":"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">userId</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">":"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">UserHandle</span><span class="p">.</span><span class="na">getUserId</span><span class="p">(</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="w">                </span><span class="n">aInfo</span><span class="p">.</span><span class="na">applicationInfo</span><span class="p">.</span><span class="na">uid</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">":"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">taskDisplayArea</span><span class="p">.</span><span class="na">getDisplayId</span><span class="p">();</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="hll"><span class="w">        </span><span class="n">mService</span><span class="p">.</span><span class="na">getActivityStartController</span><span class="p">().</span><span class="na">startHomeActivity</span><span class="p">(</span><span class="n">homeIntent</span><span class="p">,</span><span class="w"> </span><span class="n">aInfo</span><span class="p">,</span><span class="w"> </span><span class="n">myReason</span><span class="p">,</span>
+</span></span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="hll"><span class="w">                </span><span class="n">taskDisplayArea</span><span class="p">);</span>
+</span></span></code></pre></div></td></tr></tbody></table></div>
+<p>此时 <code>homeIntent</code> 从隐式 Intent 变成了显式 Intent：</p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>Intent {
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>    action    = android.intent.action.MAIN
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>    category  = android.intent.category.HOME
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>    component = com.android.launcher3/.Launcher
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a>}
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>得到显式的 Home Intent 后，进入 <code>ActivityStartController</code>：</p>
+<div class="language-java highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/frameworks/base/services/core/java/com/android/server/wm/ActivityStartController.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span>
+<span class="normal"><a href="#__codelineno-11-27">27</a></span>
+<span class="normal"><a href="#__codelineno-11-28">28</a></span>
+<span class="normal"><a href="#__codelineno-11-29">29</a></span>
+<span class="normal"><a href="#__codelineno-11-30">30</a></span>
+<span class="normal"><a href="#__codelineno-11-31">31</a></span>
+<span class="normal"><a href="#__codelineno-11-32">32</a></span>
+<span class="normal"><a href="#__codelineno-11-33">33</a></span>
+<span class="normal"><a href="#__codelineno-11-34">34</a></span>
+<span class="normal"><a href="#__codelineno-11-35">35</a></span>
+<span class="normal"><a href="#__codelineno-11-36">36</a></span>
+<span class="normal"><a href="#__codelineno-11-37">37</a></span>
+<span class="normal"><a href="#__codelineno-11-38">38</a></span>
+<span class="normal"><a href="#__codelineno-11-39">39</a></span>
+<span class="normal"><a href="#__codelineno-11-40">40</a></span>
+<span class="normal"><a href="#__codelineno-11-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">// line 167-185</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">startHomeActivity</span><span class="p">(</span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">ActivityInfo</span><span class="w"> </span><span class="n">aInfo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">                           </span><span class="n">TaskDisplayArea</span><span class="w"> </span><span class="n">taskDisplayArea</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mHomeLaunchingTaskDisplayAreas</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">taskDisplayArea</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">            </span><span class="n">Slog</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">"Abort starting home on "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">taskDisplayArea</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" recursively."</span><span class="p">);</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">            </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">ActivityOptions</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ActivityOptions</span><span class="p">.</span><span class="na">makeBasic</span><span class="p">();</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="hll"><span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="na">setLaunchWindowingMode</span><span class="p">(</span><span class="n">WINDOWING_MODE_FULLSCREEN</span><span class="p">);</span>
+</span></span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ActivityRecord</span><span class="p">.</span><span class="na">isResolverActivity</span><span class="p">(</span><span class="n">aInfo</span><span class="p">.</span><span class="na">name</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">            </span><span class="c1">// The resolver activity shouldn't be put in root home task because when the</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">            </span><span class="c1">// foreground is standard type activity, the resolver activity should be put on the</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">            </span><span class="c1">// top of current foreground instead of bring root home task to front.</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="hll"><span class="w">            </span><span class="n">options</span><span class="p">.</span><span class="na">setLaunchActivityType</span><span class="p">(</span><span class="n">ACTIVITY_TYPE_HOME</span><span class="p">);</span>
+</span></span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">displayId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taskDisplayArea</span><span class="p">.</span><span class="na">getDisplayId</span><span class="p">();</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="hll"><span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="na">setLaunchDisplayId</span><span class="p">(</span><span class="n">displayId</span><span class="p">);</span>
+</span></span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="hll"><span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="na">setLaunchTaskDisplayArea</span><span class="p">(</span><span class="n">taskDisplayArea</span><span class="p">.</span><span class="na">mRemoteToken</span>
+</span></span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="hll"><span class="w">                </span><span class="p">.</span><span class="na">toWindowContainerToken</span><span class="p">());</span>
+</span></span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21"></a>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">        </span><span class="c1">// The home activity will be started later, defer resuming to avoid unnecessary operations</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="w">        </span><span class="c1">// (e.g. start home recursively) when creating root home task.</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="w">        </span><span class="n">mSupervisor</span><span class="p">.</span><span class="na">beginDeferResume</span><span class="p">();</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="n">rootHomeTask</span><span class="p">;</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27"></a><span class="w">            </span><span class="c1">// Make sure root home task exists on display area.</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28"></a><span class="w">            </span><span class="n">rootHomeTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taskDisplayArea</span><span class="p">.</span><span class="na">getOrCreateRootHomeTask</span><span class="p">(</span><span class="n">ON_TOP</span><span class="p">);</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30"></a><span class="w">            </span><span class="n">mSupervisor</span><span class="p">.</span><span class="na">endDeferResume</span><span class="p">();</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32"></a>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34"></a><span class="w">            </span><span class="n">mHomeLaunchingTaskDisplayAreas</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">taskDisplayArea</span><span class="p">);</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35"></a><span class="hll"><span class="w">            </span><span class="n">mLastHomeActivityStartResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obtainStarter</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="s">"startHomeActivity: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">reason</span><span class="p">)</span>
+</span></span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36"></a><span class="hll"><span class="w">                    </span><span class="p">.</span><span class="na">setOutActivity</span><span class="p">(</span><span class="n">tmpOutRecord</span><span class="p">)</span>
+</span></span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37"></a><span class="hll"><span class="w">                    </span><span class="p">.</span><span class="na">setCallingUid</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38"></a><span class="hll"><span class="w">                    </span><span class="p">.</span><span class="na">setActivityInfo</span><span class="p">(</span><span class="n">aInfo</span><span class="p">)</span>
+</span></span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39"></a><span class="hll"><span class="w">                    </span><span class="p">.</span><span class="na">setActivityOptions</span><span class="p">(</span><span class="n">options</span><span class="p">.</span><span class="na">toBundle</span><span class="p">(),</span>
+</span></span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40"></a><span class="hll"><span class="w">                            </span><span class="n">Binder</span><span class="p">.</span><span class="na">getCallingPid</span><span class="p">(),</span><span class="w"> </span><span class="n">Binder</span><span class="p">.</span><span class="na">getCallingUid</span><span class="p">())</span>
+</span></span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41"></a><span class="hll"><span class="w">                    </span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+</span></span></code></pre></div></td></tr></tbody></table></div>
+<p>这里为启动设定了一些参数，然后通过 <code>obtainStarter().execute()</code> 进入通用的应用启动流程</p>
+<p>这里我们先不继续深入，而是假装桌面已经启动完毕，我们先来看看桌面是如何处理用户点击，系统又是如何再一次的走到这里，最后我们在随着普通应用的启动流程再深入这套通用流程后续操作</p>
+<h2 id="2">2. 从点击到应用启动<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
 
 
 
