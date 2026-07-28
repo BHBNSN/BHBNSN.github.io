@@ -6,6 +6,17 @@
 
 >实践固然能极快的获得成就感，但唯有理论的积累才能让你走得更远。
 
+## Android 四大组件
+
+
+### 1. Activity
+
+### 2. Service
+
+### 3. BroadcastReceiver
+
+### 4. ContentProvider
+
 ## Android 系统分层架构与启动流程
 ??? quote "参考资料"
     - [Android启动系列之一：init进程和Zygote进程](https://cloud.tencent.com/developer/article/2415718){target="_blank" rel="noopener"}
